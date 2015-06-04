@@ -31,6 +31,7 @@
 - (void)setupView {
     self.view.backgroundColor = [UIColor redColor];
     UITableView *tasksTableView = [UITableView new];
+    [tasksTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"taskCell"];
 
     tasksTableView.delegate = self;
     _source = [TasksDataSource new];
@@ -44,6 +45,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end

@@ -8,14 +8,29 @@
 
 @implementation TasksDataSource {
 
+    NSMutableArray *_dataArray;
+}
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _dataArray = (NSMutableArray *) @[@"item1", @"item2", @"item3", @"item4"];
+    }
+
+    return self;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [_dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    NSString *identifier = @"taskCell";
+    UITableViewCell *tableViewCell = [tableView dequeueReusableCellWithIdentifier:identifier];
+
+    tableViewCell.textLabel.text = _dataArray[(NSUInteger) indexPath.row];
+
+    return tableViewCell;
 }
 
 @end

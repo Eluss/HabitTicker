@@ -1,1 +1,2 @@
 pod 'PureLayout'
+pod 'MGSwipeTableCell'
