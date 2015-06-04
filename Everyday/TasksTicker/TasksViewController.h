@@ -8,10 +8,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import <MGSwipeTableCell/MGSwipeTableCell.h>
 
 
-@interface TasksViewController : UIViewController <UITableViewDelegate, MGSwipeTableCellDelegate>
+@interface TasksViewController : UIViewController <UITableViewDelegate>
 
 
 @end

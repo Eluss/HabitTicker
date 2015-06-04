@@ -46,9 +46,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (BOOL)swipeTableCell:(MGSwipeTableCell *)cell canSwipe:(MGSwipeDirection)direction {
-//    return YES;
-//}
 
 
 

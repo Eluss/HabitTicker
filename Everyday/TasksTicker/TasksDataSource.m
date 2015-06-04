@@ -13,7 +13,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _dataArray = (NSMutableArray *) @[@"item1", @"item2", @"item3", @"item4"];
+        _dataArray = [@[@"item1", @"item2", @"item3", @"item4"] mutableCopy];
     }
 
     return self;
@@ -27,11 +27,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *identifier = @"taskCell";
     UITableViewCell *tableViewCell = [tableView dequeueReusableCellWithIdentifier:identifier];
-
     tableViewCell.textLabel.text = _dataArray[(NSUInteger) indexPath.row];
 
 
     return tableViewCell;
 }
+
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [_dataArray removeObjectAtIndex:indexPath.row];
+    [tableView endUpdates];
+}
+
 
 @end
