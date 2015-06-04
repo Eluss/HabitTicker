@@ -1,13 +1,10 @@
 PODS:
-  - MGSwipeTableCell (1.4.3)
   - PureLayout (2.0.6)
 
 DEPENDENCIES:
-  - MGSwipeTableCell
   - PureLayout
 
 SPEC CHECKSUMS:
-  MGSwipeTableCell: cb9805df3cc5cad75ad43a5c1eb424be0316f0bf
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
 
 COCOAPODS: 0.35.0
