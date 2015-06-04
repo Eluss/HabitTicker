@@ -8,6 +8,7 @@
 
 
 #import "AppDelegate.h"
+#import "TasksViewController.h"
 
 
 @interface AppDelegate ()
@@ -20,7 +21,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    UITabBarController *tabBarController = [UITabBarController new];
+    self.window.rootViewController = tabBarController;
+
+    TasksViewController *viewController = [TasksViewController new];
+    viewController.title = @"first vc";
+
+    [tabBarController addChildViewController:viewController];
+
     return YES;
 }
 

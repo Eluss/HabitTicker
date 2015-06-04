@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TasksViewController.h
 //  Everyday
 //
 //  Created by Eluss on 04/06/15.
@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ViewController : UIViewController
+@interface TasksViewController : UIViewController <UITableViewDelegate>
 
 
 @end
