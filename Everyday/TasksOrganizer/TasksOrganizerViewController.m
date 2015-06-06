@@ -31,6 +31,6 @@
 
     [self.view addSubview:tasksTableView];
     [tasksTableView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];
-    [tasksTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view];
+    [tasksTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:100];
 }
 @end
