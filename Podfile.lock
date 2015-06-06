@@ -1,10 +1,22 @@
 PODS:
+  - MCSwipeTableViewCell (2.1.2)
   - PureLayout (2.0.6)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
 
 DEPENDENCIES:
+  - MCSwipeTableViewCell
   - PureLayout
+  - ReactiveCocoa
 
 SPEC CHECKSUMS:
+  MCSwipeTableViewCell: 0fc22bd3635b9b5f4ce08675218b0a7278b6440f
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
 
 COCOAPODS: 0.35.0

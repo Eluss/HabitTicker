@@ -9,6 +9,8 @@
 
 #import "AppDelegate.h"
 #import "TasksViewController.h"
+#import "TasksOrganizerTableViewDataSource.h"
+#import "TasksOrganizerViewController.h"
 
 
 @interface AppDelegate ()
@@ -18,18 +20,20 @@
 @implementation AppDelegate
 
 
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     UITabBarController *tabBarController = [UITabBarController new];
     self.window.rootViewController = tabBarController;
 
-    TasksViewController *viewController = [TasksViewController new];
-    viewController.title = @"first vc";
+    TasksViewController *tickerViewController = [TasksViewController new];
+    tickerViewController.title = @"Everyday Ticker";
 
-    [tabBarController addChildViewController:viewController];
+    TasksOrganizerViewController *organizerViewController = [TasksOrganizerViewController new];
+    organizerViewController.title = @"Everyday Organizer";
+
+    [tabBarController addChildViewController:tickerViewController];
+    [tabBarController addChildViewController:organizerViewController];
 
     return YES;
 }

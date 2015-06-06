@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MCSwipeTableViewCell/MCSwipeTableViewCell.h>
 #import "UIKit/UIKit.h"
-@interface TasksDataSource : NSObject <UITableViewDataSource>
+@interface TasksTableViewDataSource : NSObject <UITableViewDataSource>
 @end

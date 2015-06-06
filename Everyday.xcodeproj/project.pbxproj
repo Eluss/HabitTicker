@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		5C22313A4E0180B24D36D130 /* EverydayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AB6E3BE97262E85855C /* EverydayTests.m */; };
 		5C2233B253FC3E60236C6194 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C22329EA36F81A492BC4D43 /* Images.xcassets */; };
-		5C22398CE30FEA1EA5274EFF /* TasksDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2234D6E7EDBEA151BE9722 /* TasksDataSource.m */; };
+		5C2235AF71B6B5E41552454B /* TasksOrganizerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AA3E4A524E406F56565 /* TasksOrganizerViewController.m */; };
+		5C22398CE30FEA1EA5274EFF /* TasksTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2234D6E7EDBEA151BE9722 /* TasksTableViewDataSource.m */; };
 		5C223B8C5647885DD4D52CDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2234FC77C14AA77EFDA9B5 /* LaunchScreen.xib */; };
 		5C223BB48E39CCC81278073E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223E5A16EDBC7699676DB4 /* main.m */; };
 		5C223CBA5F64B9DE3E827E27 /* TasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2238B0EE541D4E4DAD93BA /* TasksViewController.m */; };
 		5C223E68A02FC0F34ACAF590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223B280D1E35B246F45672 /* AppDelegate.m */; };
+		5C223FCB1B74161C94078801 /* TasksOrganizerTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223333C0A9A8135135E1D0 /* TasksOrganizerTableViewDataSource.m */; };
 		A622870329842B8CD1C94B38 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD1A4C5F010C07F13D29651 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -31,15 +33,19 @@
 		05184D36192553B0F54C09AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5C2231670C0989875E8F23AE /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
 		5C2231C3D95FFC9C17F1090F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		5C2231CEF02ABC08686CEBFF /* TasksOrganizerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksOrganizerViewController.h; sourceTree = "<group>"; };
 		5C22329EA36F81A492BC4D43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5C223333C0A9A8135135E1D0 /* TasksOrganizerTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksOrganizerTableViewDataSource.m; sourceTree = "<group>"; };
 		5C2233901EA0F3B0BBFAC642 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5C2234D6E7EDBEA151BE9722 /* TasksDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksDataSource.m; sourceTree = "<group>"; };
+		5C2234D6E7EDBEA151BE9722 /* TasksTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableViewDataSource.m; sourceTree = "<group>"; };
 		5C2238B0EE541D4E4DAD93BA /* TasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksViewController.m; sourceTree = "<group>"; };
+		5C2238B20276594CAA5BA456 /* TasksOrganizerTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksOrganizerTableViewDataSource.h; sourceTree = "<group>"; };
+		5C223AA3E4A524E406F56565 /* TasksOrganizerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksOrganizerViewController.m; sourceTree = "<group>"; };
 		5C223AB6E3BE97262E85855C /* EverydayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverydayTests.m; sourceTree = "<group>"; };
 		5C223B280D1E35B246F45672 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5C223C782E3BD9E92631D82E /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C223C84562DAC2ECD55EB74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		5C223D5213858B1BCD1F409F /* TasksDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksDataSource.h; sourceTree = "<group>"; };
+		5C223D5213858B1BCD1F409F /* TasksTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewDataSource.h; sourceTree = "<group>"; };
 		5C223DDDE029AB5A370E5A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5C223E5A16EDBC7699676DB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C223F0E05306B53F725C7FE /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +99,7 @@
 				5C223B280D1E35B246F45672 /* AppDelegate.m */,
 				5C223DB769BD0050CBAACDED /* TasksTicker */,
 				5C2234FC77C14AA77EFDA9B5 /* LaunchScreen.xib */,
+				5C2239D2334EFF13D90A9261 /* TasksOrganizer */,
 			);
 			path = Everyday;
 			sourceTree = "<group>";
@@ -114,6 +121,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5C2239D2334EFF13D90A9261 /* TasksOrganizer */ = {
+			isa = PBXGroup;
+			children = (
+				5C223AA3E4A524E406F56565 /* TasksOrganizerViewController.m */,
+				5C2231CEF02ABC08686CEBFF /* TasksOrganizerViewController.h */,
+				5C223333C0A9A8135135E1D0 /* TasksOrganizerTableViewDataSource.m */,
+				5C2238B20276594CAA5BA456 /* TasksOrganizerTableViewDataSource.h */,
+			);
+			path = TasksOrganizer;
+			sourceTree = "<group>";
+		};
 		5C223B41BE1A8493062B4A35 = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +148,8 @@
 			children = (
 				5C2231670C0989875E8F23AE /* TasksViewController.h */,
 				5C2238B0EE541D4E4DAD93BA /* TasksViewController.m */,
-				5C2234D6E7EDBEA151BE9722 /* TasksDataSource.m */,
-				5C223D5213858B1BCD1F409F /* TasksDataSource.h */,
+				5C2234D6E7EDBEA151BE9722 /* TasksTableViewDataSource.m */,
+				5C223D5213858B1BCD1F409F /* TasksTableViewDataSource.h */,
 			);
 			path = TasksTicker;
 			sourceTree = "<group>";
@@ -280,7 +298,9 @@
 				5C223BB48E39CCC81278073E /* main.m in Sources */,
 				5C223E68A02FC0F34ACAF590 /* AppDelegate.m in Sources */,
 				5C223CBA5F64B9DE3E827E27 /* TasksViewController.m in Sources */,
-				5C22398CE30FEA1EA5274EFF /* TasksDataSource.m in Sources */,
+				5C22398CE30FEA1EA5274EFF /* TasksTableViewDataSource.m in Sources */,
+				5C2235AF71B6B5E41552454B /* TasksOrganizerViewController.m in Sources */,
+				5C223FCB1B74161C94078801 /* TasksOrganizerTableViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
