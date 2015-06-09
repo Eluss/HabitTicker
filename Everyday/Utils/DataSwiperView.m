@@ -28,7 +28,7 @@
 }
 
 - (void)setupView {
-    self.backgroundColor = [UIColor orangeColor];
+    self.backgroundColor = [UIColor grayColor];
     UIButton *leftButton = [UIButton new];
     [leftButton setTitle:@"<" forState:UIControlStateNormal];
     [self addSubview:leftButton];
