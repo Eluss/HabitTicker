@@ -8,10 +8,6 @@
 #import "NSDate+DateTools.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 
-@interface DataSwiperView ()
-
-@property (nonatomic, strong) NSDate *swiperDate;
-@end
 
 @implementation DataSwiperView {
 

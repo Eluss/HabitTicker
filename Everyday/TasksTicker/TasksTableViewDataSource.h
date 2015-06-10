@@ -7,4 +7,7 @@
 #import <MCSwipeTableViewCell/MCSwipeTableViewCell.h>
 #import "UIKit/UIKit.h"
 @interface TasksTableViewDataSource : NSObject <UITableViewDataSource>
+- (void)updateTasksDataForDate:(NSDate *)date;
+
+- (id)initWithDate:(NSDate *)date;
 @end

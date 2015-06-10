@@ -7,4 +7,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DataSwiperView : UIView
+
+@property (nonatomic, strong) NSDate *swiperDate;
+
 @end

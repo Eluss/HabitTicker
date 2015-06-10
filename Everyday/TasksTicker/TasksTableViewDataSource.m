@@ -16,24 +16,38 @@
     NSArray *_dataArray;
     RACDisposable *_tasksSubscription;
     TasksDataSource *_fakeTasksDataSource;
+    NSDate *_tasksDate;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
         _fakeTasksDataSource = [TasksDataSource new];
-        [self updateTasksData];
+        [self updateTasksDataForDate:nil];
     }
 
     return self;
 }
 
-- (void)updateTasksData {
+- (void)updateTasksDataForDate:(NSDate *)date {
     @weakify(self);
-    _tasksSubscription = [[_fakeTasksDataSource tasksForDate:nil] subscribeNext:^(NSArray *tasks) {
+    [_tasksSubscription dispose];
+    _tasksSubscription = [[_fakeTasksDataSource tasksForDate:date] subscribeNext:^(NSArray *tasks) {
         @strongify(self);
+        self->_tasksDate = date;
         self->_dataArray = tasks;
     }];
+}
+
+- (id)initWithDate:(NSDate *)date {
+    self = [super init];
+    if (self) {
+        _tasksDate = date;
+        _fakeTasksDataSource = [TasksDataSource new];
+        [self updateTasksDataForDate:date];
+    }
+
+    return self;
 }
 
 
@@ -87,11 +101,23 @@
     NSString *path = @"~/Documents/data";
     path = [path stringByExpandingTildeInPath];
 
-    NSMutableDictionary *rootObject = [NSMutableDictionary dictionary];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"dd.MM.yyyy";
+    NSString *key = [dateFormatter stringFromDate:_tasksDate];
 
-    [rootObject setValue:_dataArray forKey:@"array"];
+    NSMutableDictionary *rootObject = [self loadRootDictionary];
+    NSLog(@"saving for date %@", key);
+    [rootObject setValue:_dataArray forKey:key];
+
 
     [NSKeyedArchiver archiveRootObject:rootObject toFile:path];
+}
+
+- (NSMutableDictionary *)loadRootDictionary {
+    NSString *path = @"~/Documents/data";
+    path = [path stringByExpandingTildeInPath];
+    NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    return rootObject;
 }
 
 @end

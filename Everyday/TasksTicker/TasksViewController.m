@@ -12,14 +12,13 @@
 #import "TasksTableViewDataSource.h"
 #import "MCSwipeTableViewCell.h"
 #import "DataSwiperView.h"
-
-
-@interface TasksViewController ()
-
-@end
+#import "NSObject+RACPropertySubscribing.h"
+#import "RACSignal.h"
+#import "RACEXTScope.h"
 
 @implementation TasksViewController {
     TasksTableViewDataSource *_source;
+    UITableView *_tasksTableView;
 }
 
 
@@ -30,21 +29,27 @@
 
 - (void)setupView {
     self.view.backgroundColor = [UIColor redColor];
-    UITableView *tasksTableView = [UITableView new];
-    [tasksTableView registerClass:[MCSwipeTableViewCell class] forCellReuseIdentifier:@"taskCell"];
-    [self.view addSubview:tasksTableView];
+    _tasksTableView = [UITableView new];
+    [_tasksTableView registerClass:[MCSwipeTableViewCell class] forCellReuseIdentifier:@"taskCell"];
+    [self.view addSubview:_tasksTableView];
 
-    tasksTableView.delegate = self;
-    _source = [TasksTableViewDataSource new];
-    tasksTableView.dataSource = _source;
 
 
     DataSwiperView *dataSwiperView = [DataSwiperView new];
+    @weakify(self);
+    [RACObserve(dataSwiperView, swiperDate) subscribeNext:^(NSDate *date) {
+        @strongify(self);
+        [self->_source updateTasksDataForDate:date];
+        [_tasksTableView reloadData];
+    }];
     [self.view addSubview:dataSwiperView];
 
+    _tasksTableView.delegate = self;
+    _source = [[TasksTableViewDataSource alloc] initWithDate:dataSwiperView.swiperDate];
+    _tasksTableView.dataSource = _source;
 
-    [tasksTableView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];
-    [tasksTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:dataSwiperView];
+    [_tasksTableView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];
+    [_tasksTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:dataSwiperView];
 
     [dataSwiperView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
     [dataSwiperView autoSetDimension:ALDimensionHeight toSize:100];
