@@ -13,7 +13,7 @@
 }
 - (RACSignal *)tasksForDate:(NSDate *)date {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        NSArray *tasks = [self createTasks];
+        NSArray *tasks = [self loadDataFromDisk];
         [subscriber sendNext:tasks];
         [subscriber sendCompleted];
         return nil;
@@ -21,9 +21,24 @@
 }
 
 - (NSArray *)createTasks {
+
     Task *homeworkTask = [[Task alloc] initWithName:@"Homework" isDone:NO];
     Task *pianoTask = [[Task alloc] initWithName:@"Piano Lesson" isDone:YES];
     return @[homeworkTask, pianoTask];
+}
+
+- (NSArray *)loadDataFromDisk {
+    NSString *path = @"~/Documents/data";
+    path = [path stringByExpandingTildeInPath];
+
+    NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+
+    NSArray *array;
+    if ([rootObject valueForKey:@"array"]) {
+        array = [rootObject valueForKey:@"array"];
+    }
+
+    return array;
 }
 
 @end

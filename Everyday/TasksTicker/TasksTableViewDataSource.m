@@ -75,33 +75,23 @@
         cell.contentView.backgroundColor = [UIColor whiteColor];
         cell.textLabel.textColor = [UIColor blackColor];
     }
+
+    [self saveArray];
 }
 
 - (void)dealloc {
     [_tasksSubscription dispose];
 }
 
-//- (void)saveArray {
-//    if (_dataArray != nil) {
-//        [self createDataPath];
-//        NSString *dataPath = [@"dataPath" stringByAppendingPathComponent:@"file"];
-//        NSMutableData *data = [NSMutableData new];
-//        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:_dataArray];
-//        [archiver encodeObject:_dataArray forKey:@"Data"];
-//        [archiver finishEncoding];
-//        [data writeToFile:dataPath atomically:YES];
-//    }
-//}
-//
-//- (BOOL)createDataPath {
-//
-//    NSError *error;
-//    BOOL success = [[NSFileManager defaultManager] createDirectoryAtPath:@"dataPath" withIntermediateDirectories:YES attributes:nil error:&error];
-//    if (!success) {
-//        NSLog(@"Error creating data path: %@", [error localizedDescription]);
-//    }
-//    return success;
-//
-//}
+- (void)saveArray {
+    NSString *path = @"~/Documents/data";
+    path = [path stringByExpandingTildeInPath];
+
+    NSMutableDictionary *rootObject = [NSMutableDictionary dictionary];
+
+    [rootObject setValue:_dataArray forKey:@"array"];
+
+    [NSKeyedArchiver archiveRootObject:rootObject toFile:path];
+}
 
 @end
