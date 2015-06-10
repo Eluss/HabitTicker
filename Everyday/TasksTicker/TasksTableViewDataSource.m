@@ -98,15 +98,17 @@
 }
 
 - (void)saveArray {
-    NSString *path = @"~/Documents/data";
-    path = [path stringByExpandingTildeInPath];
-
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateFormat = @"dd.MM.yyyy";
     NSString *key = [dateFormatter stringFromDate:_tasksDate];
 
+    NSString *path = @"~/Documents/";
+    path = [path stringByAppendingString:key];
+    path = [path stringByExpandingTildeInPath];
+
+
     NSMutableDictionary *rootObject = [self loadRootDictionary];
-    NSLog(@"saving for date %@", key);
+//    NSLog(@"saving for date %@", key);
     [rootObject setValue:_dataArray forKey:key];
 
 
@@ -114,9 +116,17 @@
 }
 
 - (NSMutableDictionary *)loadRootDictionary {
-    NSString *path = @"~/Documents/data";
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"dd.MM.yyyy";
+    NSString *key = [dateFormatter stringFromDate:_tasksDate];
+
+    NSString *path = @"~/Documents/";
+    path = [path stringByAppendingString:key];
     path = [path stringByExpandingTildeInPath];
     NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    if (rootObject == nil) {
+        return [NSMutableDictionary dictionary];
+    }
     return rootObject;
 }
 

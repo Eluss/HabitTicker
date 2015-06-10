@@ -21,15 +21,17 @@
 }
 
 - (NSArray *)loadDataFromDiskForDate:(NSDate *)date {
-    NSString *path = @"~/Documents/data";
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"dd.MM.yyyy";
+    NSString *key = [dateFormatter stringFromDate:date];
+
+    NSString *path = @"~/Documents/";
+    path = [path stringByAppendingString:key];
     path = [path stringByExpandingTildeInPath];
 
     NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 
     NSArray *array;
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"dd.MM.yyyy";
-    NSString *key = [dateFormatter stringFromDate:date];
     NSLog(@"loading for date %@", key);
     if ([rootObject valueForKey:key]) {
         array = [rootObject valueForKey:key];
@@ -42,6 +44,13 @@
 }
 
 - (NSArray *)createTasks {
+    NSMutableArray *array = [NSMutableArray new];
+    for (NSInteger i = 0; i < 20; i++) {
+        NSString *string = [NSString stringWithFormat:@"Object nr %d", i];
+        Task *homeworkTask = [[Task alloc] initWithName:string isDone:NO];
+        [array addObject:homeworkTask];
+    }
+    return array;
 
     Task *homeworkTask = [[Task alloc] initWithName:@"Homework" isDone:NO];
     Task *pianoTask = [[Task alloc] initWithName:@"Piano Lesson" isDone:YES];
