@@ -44,13 +44,13 @@
 }
 
 - (NSArray *)createTasks {
-    NSMutableArray *array = [NSMutableArray new];
-    for (NSInteger i = 0; i < 20; i++) {
-        NSString *string = [NSString stringWithFormat:@"Object nr %d", i];
-        Task *homeworkTask = [[Task alloc] initWithName:string isDone:NO];
-        [array addObject:homeworkTask];
-    }
-    return array;
+//    NSMutableArray *array = [NSMutableArray new];
+//    for (NSInteger i = 0; i < 20; i++) {
+//        NSString *string = [NSString stringWithFormat:@"Object nr %d", i];
+//        Task *homeworkTask = [[Task alloc] initWithName:string isDone:NO];
+//        [array addObject:homeworkTask];
+//    }
+//    return array;
 
     Task *homeworkTask = [[Task alloc] initWithName:@"Homework" isDone:NO];
     Task *pianoTask = [[Task alloc] initWithName:@"Piano Lesson" isDone:YES];

@@ -66,7 +66,9 @@
     blueView.backgroundColor = [UIColor blueColor];
 
     Task *cellTask = _dataArray[(NSUInteger) indexPath.row];
+
     cell.textLabel.text = cellTask.name;
+
 
     UIColor *color = [UIColor greenColor];
     @weakify(self);
@@ -76,10 +78,19 @@
         [self updateCell:cell forTask:cellTask];
     }];
 
+    UIColor *deletionColor = [UIColor redColor];
+    [cell setSwipeGestureWithView:blueView color:deletionColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        @strongify(self);
+        self->_deletionBlock(cell,state,mode);
+    }];
+
     [self updateCell:cell forTask:cellTask];
 
     return cell;
+
+
 }
+
 
 - (void)updateCell:(MCSwipeTableViewCell *)cell forTask:(Task *)task {
     if (task.isDone) {
@@ -130,4 +141,16 @@
     return rootObject;
 }
 
+- (void)addCustomRowWithName:(NSString *)name {
+    NSMutableArray *array = [_dataArray mutableCopy];
+    Task *task = [[Task alloc] initWithName:name isDone:NO];
+    [array insertObject:task atIndex:0];
+    _dataArray = array;
+}
+
+- (void)removeDataAtIndexPath:(NSIndexPath *)path {
+    NSMutableArray *array = [_dataArray mutableCopy];
+    [array removeObjectAtIndex:(NSUInteger) path.row];
+    _dataArray = array;
+}
 @end

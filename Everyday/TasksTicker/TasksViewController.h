@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TasksViewController : UIViewController <UITableViewDelegate>
+@interface TasksViewController : UIViewController <UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 
 @end
