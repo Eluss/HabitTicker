@@ -13,4 +13,7 @@
 @interface TasksViewController : UIViewController <UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 
+- (void)showMessageOnTableView;
+
+- (BOOL)fileExistsForDate:(NSDate *)date;
 @end

@@ -32,7 +32,7 @@
     NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 
     NSArray *array;
-    NSLog(@"loading for date %@", key);
+//    NSLog(@"loading for date %@", key);
     if ([rootObject valueForKey:key]) {
         array = [rootObject valueForKey:key];
     }

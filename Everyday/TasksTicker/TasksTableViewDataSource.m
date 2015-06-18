@@ -10,6 +10,7 @@
 #import "RACSignal.h"
 #import "RACDisposable.h"
 #import "Task.h"
+#import "AppDelegate.h"
 
 @implementation TasksTableViewDataSource {
 
@@ -17,6 +18,7 @@
     RACDisposable *_tasksSubscription;
     TasksDataSource *_fakeTasksDataSource;
     NSDate *_tasksDate;
+    BOOL _hasNoFileForData;
 }
 
 - (instancetype)init {
@@ -27,6 +29,10 @@
     }
 
     return self;
+}
+
+- (void)updateTasksDataForCurrentDate {
+    [self updateTasksDataForDate:_tasksDate];
 }
 
 - (void)updateTasksDataForDate:(NSDate *)date {
@@ -52,7 +58,11 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_dataArray count];
+    if (_hasNoFileForData) {
+        return 0;
+    } else {
+        return [_dataArray count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,28 +70,31 @@
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-    cell.contentView.backgroundColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = UIColorFromRGB(0xC9F6FF);
 
-    UIView *blueView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    blueView.backgroundColor = [UIColor blueColor];
+    UIView *leftSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    leftSwipeView.backgroundColor = UIColorFromRGB(0x66FF6B);
+
+    UIView *rightSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    rightSwipeView.backgroundColor = UIColorFromRGB(0xFF6666);
 
     Task *cellTask = _dataArray[(NSUInteger) indexPath.row];
 
     cell.textLabel.text = cellTask.name;
 
 
-    UIColor *color = [UIColor greenColor];
+    UIColor *color = UIColorFromRGB(0x66FF6B);
     @weakify(self);
-    [cell setSwipeGestureWithView:blueView color:color mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+    [cell setSwipeGestureWithView:leftSwipeView color:color mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
         @strongify(self);
         [cellTask changeState];
         [self updateCell:cell forTask:cellTask];
     }];
 
-    UIColor *deletionColor = [UIColor redColor];
-    [cell setSwipeGestureWithView:blueView color:deletionColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+    UIColor *deletionColor = UIColorFromRGB(0xFF6666);
+    [cell setSwipeGestureWithView:rightSwipeView color:deletionColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
         @strongify(self);
-        self->_deletionBlock(cell,state,mode);
+        self->_deletionBlock(cell, state, mode);
     }];
 
     [self updateCell:cell forTask:cellTask];
@@ -94,10 +107,10 @@
 
 - (void)updateCell:(MCSwipeTableViewCell *)cell forTask:(Task *)task {
     if (task.isDone) {
-        cell.contentView.backgroundColor = [UIColor greenColor];
+        cell.contentView.backgroundColor = UIColorFromRGB(0x66FF6B);
         cell.textLabel.textColor = [UIColor grayColor];
     } else {
-        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.contentView.backgroundColor = UIColorFromRGB(0xC9F6FF);
         cell.textLabel.textColor = [UIColor blackColor];
     }
 
@@ -119,7 +132,6 @@
 
 
     NSMutableDictionary *rootObject = [self loadRootDictionary];
-//    NSLog(@"saving for date %@", key);
     [rootObject setValue:_dataArray forKey:key];
 
 
@@ -152,5 +164,17 @@
     NSMutableArray *array = [_dataArray mutableCopy];
     [array removeObjectAtIndex:(NSUInteger) path.row];
     _dataArray = array;
+}
+
+- (void)hideAllCells {
+    _hasNoFileForData = YES;
+}
+
+- (void)showAllCells {
+    _hasNoFileForData = NO;
+}
+
+- (BOOL)isShowingCells {
+    return !_hasNoFileForData;
 }
 @end

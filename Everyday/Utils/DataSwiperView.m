@@ -7,6 +7,7 @@
 #import "DataSwiperView.h"
 #import "NSDate+DateTools.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
+#import "AppDelegate.h"
 
 
 @implementation DataSwiperView {
@@ -24,7 +25,7 @@
 }
 
 - (void)setupView {
-    self.backgroundColor = [UIColor grayColor];
+    self.backgroundColor = UIColorFromRGB(0x6696FF);
     UIButton *leftButton = [UIButton new];
     [leftButton setTitle:@"<" forState:UIControlStateNormal];
     [self addSubview:leftButton];
