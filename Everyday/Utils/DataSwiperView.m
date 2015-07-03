@@ -56,6 +56,21 @@
     }];
 
     self.swiperDate = [NSDate new];
+
+    [self addSwipeGestures];
+}
+
+- (void)addSwipeGestures {
+    UISwipeGestureRecognizer *swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(previousDate)];
+    swipeGestureRecognizerLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self addGestureRecognizer:swipeGestureRecognizerLeft];
+
+    UISwipeGestureRecognizer *swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(nextDate)];
+    swipeGestureRecognizerRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self addGestureRecognizer:swipeGestureRecognizerRight];
+
+
+
 }
 
 - (void)nextDate {
