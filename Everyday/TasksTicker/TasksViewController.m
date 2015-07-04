@@ -7,6 +7,7 @@
 //
 
 
+#import <DateTools/NSDate+DateTools.h>
 #import "TasksViewController.h"
 #import "ALView+PureLayout.h"
 #import "TasksTableViewDataSource.h"
@@ -24,58 +25,71 @@
     UITableView *_tasksTableView;
     NSString *_taskName;
     DataSwiperView *_dataSwiperView;
+    NSDate *_tasksDate;
+}
+
+- (instancetype)initWithDate:(NSDate *)date {
+    self = [super init];
+    if (self) {
+        _tasksDate = date;
+        [self setupView];
+    }
+
+    return self;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupView];
 }
 
 - (void)setupView {
-    self.view.backgroundColor = [UIColor redColor];
+
     _tasksTableView = [UITableView new];
     [_tasksTableView registerClass:[MCSwipeTableViewCell class] forCellReuseIdentifier:@"taskCell"];
+    _tasksTableView.delegate = self;
+//    _tasksTableView.backgroundColor = UIColorFromRGB(0xC9F6FF);
+    _tasksTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tasksTableView];
 
+    _source = [[TasksTableViewDataSource alloc] initWithDate:_tasksDate];
+    _tasksTableView.dataSource = _source;
 
-    _dataSwiperView = [DataSwiperView new];
-    @weakify(self);
-    [RACObserve(_dataSwiperView, swiperDate) subscribeNext:^(NSDate *date) {
-        @strongify(self);
-        BOOL fileExists = [FileChecker fileExistsForDate:date];
-        if (fileExists) {
-            _tasksTableView.backgroundView = nil;
-            [self->_source showAllCells];
-            [self->_source updateTasksDataForDate:date];
-            [_tasksTableView reloadData];
-        } else {
-            [self showMessageOnTableView];
-            [self->_source hideAllCells];
-            [_tasksTableView reloadData];
-        }
-    }];
+    _dataSwiperView = [[DataSwiperView alloc] initWithDate:_tasksDate];
+    _dataSwiperView.delegate = self;
     [self.view addSubview:_dataSwiperView];
 
-    _tasksTableView.delegate = self;
-    _source = [[TasksTableViewDataSource alloc] initWithDate:_dataSwiperView.swiperDate];
-    _tasksTableView.dataSource = _source;
-    _tasksTableView.backgroundColor = UIColorFromRGB(0xC9F6FF);
-    _tasksTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self showMessageIfDateHasNoRecordedData];
 
-    MCSwipeCompletionBlock block = ^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+
+    @weakify(self);
+    MCSwipeCompletionBlock cellDeletionBlock = ^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
         @strongify(self);
         [self deleteCell:cell];
         [self->_source saveArray];
     };
 
-    _source.deletionBlock = block;
+    _source.deletionBlock = cellDeletionBlock;
 
     [_tasksTableView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];
     [_tasksTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_dataSwiperView];
 
     [_dataSwiperView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
     [_dataSwiperView autoSetDimension:ALDimensionHeight toSize:100];
+}
+
+- (void)showMessageIfDateHasNoRecordedData {
+    BOOL fileExists = [FileChecker fileExistsForDate:_tasksDate];
+    if (fileExists) {
+        _tasksTableView.backgroundView = nil;
+        [_source showAllCells];
+        [_source updateTasksDataForDate:_tasksDate];
+        [_tasksTableView reloadData];
+    } else {
+        [self showMessageOnTableView];
+        [_source hideAllCells];
+        [_tasksTableView reloadData];
+    }
 }
 
 
@@ -149,5 +163,22 @@
     }];
 }
 
+- (void)didMoveToPreviousDate {
+    [self.delegate previousTasksList];
+}
+
+- (void)didMoveToNextDate {
+    [self.delegate nextTasksList];
+}
+
+
+- (void)tasksForDate:(NSDate *)date {
+    _tasksDate = date;
+    NSLog(@"Tasks for date: %d", date.day);
+    [_dataSwiperView updateDate:date];
+    [_source updateTasksDataForDate:date];
+    [self showMessageIfDateHasNoRecordedData];
+    [self.view layoutIfNeeded];
+}
 
 @end

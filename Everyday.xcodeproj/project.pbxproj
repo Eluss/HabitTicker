@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33821A24D0FF611594879 /* TasksPageViewController.m */; };
 		5C22306C7386D1FEFD6FDBD3 /* FileChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223F3E175407DE261AFD01 /* FileChecker.m */; };
 		5C22313A4E0180B24D36D130 /* EverydayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AB6E3BE97262E85855C /* EverydayTests.m */; };
 		5C22322C2F650157A4B82A02 /* TasksDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223749B8AE24CFB3AB4DB2 /* TasksDataSource.m */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		05184D36192553B0F54C09AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3FF33821A24D0FF611594879 /* TasksPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksPageViewController.m; sourceTree = "<group>"; };
+		3FF339AF20EC3B5F6D549EF7 /* TasksPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksPageViewController.h; sourceTree = "<group>"; };
 		5C223031F7D796B09774A022 /* FileChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileChecker.h; sourceTree = "<group>"; };
 		5C223107B677172789367380 /* DataSwiperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSwiperView.m; sourceTree = "<group>"; };
 		5C2231670C0989875E8F23AE /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
@@ -84,6 +87,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FF33369BAD7374235141F3C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5C2231F11F47D1F8FEA1F797 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,9 @@
 				5C2239D2334EFF13D90A9261 /* TasksOrganizer */,
 				5C223F4F458DD77ECD19A491 /* Utils */,
 				5C223F1E0732FA57D9EBBFA8 /* DataSources */,
+				3FF33821A24D0FF611594879 /* TasksPageViewController.m */,
+				3FF339AF20EC3B5F6D549EF7 /* TasksPageViewController.h */,
+				3FF33369BAD7374235141F3C /* Resources */,
 			);
 			path = Everyday;
 			sourceTree = "<group>";
@@ -341,6 +354,7 @@
 				5C2235F4513F23CCF1939FC2 /* DataSwiperView.m in Sources */,
 				5C22322C2F650157A4B82A02 /* TasksDataSource.m in Sources */,
 				5C22306C7386D1FEFD6FDBD3 /* FileChecker.m in Sources */,
+				3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@
 #import "TasksViewController.h"
 #import "TasksOrganizerTableViewDataSource.h"
 #import "TasksOrganizerViewController.h"
-
+#import "TasksPageViewController.h"
 
 
 @interface AppDelegate ()
@@ -26,13 +26,19 @@
     UITabBarController *tabBarController = [UITabBarController new];
     self.window.rootViewController = tabBarController;
 
+    TasksPageViewController *tasksPageViewController = [[TasksPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                                                                          navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                                                        options:nil];
+
+    tasksPageViewController.title = @"Everyday ticker swiper";
+
     TasksViewController *tickerViewController = [TasksViewController new];
     tickerViewController.title = @"Everyday Ticker";
 
     TasksOrganizerViewController *organizerViewController = [TasksOrganizerViewController new];
     organizerViewController.title = @"Everyday Organizer";
 
-    [tabBarController addChildViewController:tickerViewController];
+    [tabBarController addChildViewController:tasksPageViewController];
     [tabBarController addChildViewController:organizerViewController];
 
     return YES;

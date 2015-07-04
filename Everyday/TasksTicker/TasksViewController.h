@@ -8,12 +8,27 @@
 
 
 #import <UIKit/UIKit.h>
+#import "DataSwiperView.h"
 
 
-@interface TasksViewController : UIViewController <UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@protocol TasksViewControllerDelegate
 
+@required
+- (void)previousTasksList;
+- (void)nextTasksList;
+
+@end
+
+@interface TasksViewController : UIViewController <UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate, DataSwiperDelegate>
+
+@property (nonatomic, weak) id <TasksViewControllerDelegate> delegate;
+
+- (instancetype)initWithDate:(NSDate *)date;
 
 - (void)showMessageOnTableView;
 
 - (BOOL)fileExistsForDate:(NSDate *)date;
+
+
+- (void)tasksForDate:(NSDate *)date;
 @end

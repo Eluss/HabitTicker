@@ -13,18 +13,20 @@
 @implementation DataSwiperView {
 
 
+    UILabel *_dataLabel;
 }
 
-- (instancetype)init {
+- (instancetype)initWithDate:(NSDate *)date {
     self = [super init];
     if (self) {
+        _swiperDate = date;
         [self setupView];
     }
-
     return self;
 }
 
 - (void)setupView {
+
     self.backgroundColor = UIColorFromRGB(0x6696FF);
     UIButton *leftButton = [UIButton new];
     [leftButton setTitle:@"<" forState:UIControlStateNormal];
@@ -40,46 +42,53 @@
     [rightbutton autoSetDimension:ALDimensionWidth toSize:50];
     [rightbutton addTarget:self action:@selector(nextDate) forControlEvents:UIControlEventTouchUpInside];
 
-    UILabel *dataLabel = [UILabel new];
-    [self addSubview:dataLabel];
-    dataLabel.textAlignment = NSTextAlignmentCenter;
+    _dataLabel = [UILabel new];
+    [self addSubview:_dataLabel];
+    _dataLabel.textAlignment = NSTextAlignmentCenter;
 
-    [dataLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:leftButton];
-    [dataLabel autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:rightbutton];
-    [dataLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self];
+    [_dataLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:leftButton];
+    [_dataLabel autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:rightbutton];
+    [_dataLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self];
 
-    RAC(dataLabel, text) = [RACObserve(self, swiperDate) map:^id(NSDate *date) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+    if (self.swiperDate == nil) {
+        self.swiperDate = [NSDate new];
+    }
 
-        return [dateFormatter stringFromDate:date];
-    }];
-
-    self.swiperDate = [NSDate new];
-
+    [self setupLabelDate];
     [self addSwipeGestures];
 }
 
+- (void)setupLabelDate {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+    _dataLabel.text = [dateFormatter stringFromDate:self.swiperDate];
+}
+
 - (void)addSwipeGestures {
-    UISwipeGestureRecognizer *swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(previousDate)];
+    UISwipeGestureRecognizer *swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(nextDate)];
     swipeGestureRecognizerLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self addGestureRecognizer:swipeGestureRecognizerLeft];
 
-    UISwipeGestureRecognizer *swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(nextDate)];
+    UISwipeGestureRecognizer *swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(previousDate)];
     swipeGestureRecognizerRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self addGestureRecognizer:swipeGestureRecognizerRight];
-
 
 
 }
 
 - (void)nextDate {
     self.swiperDate = [self.swiperDate dateByAddingDays:1];
+    [self.delegate didMoveToNextDate];
 }
 
 - (void)previousDate {
     self.swiperDate = [self.swiperDate dateByAddingDays:-1];
+    [self.delegate didMoveToPreviousDate];
 }
 
 
+- (void)updateDate:(NSDate *)date {
+    self.swiperDate = date;
+    [self setupLabelDate];
+}
 @end
