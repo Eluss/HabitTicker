@@ -5,7 +5,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TasksTableViewDataSourceProtocol.h"
 
-@interface TasksOrganizerTableViewDataSource : NSObject <UITableViewDataSource>
+@interface TasksOrganizerTableViewDataSource : NSObject <TasksTableViewDataSourceProtocol>
+
+@property(nonatomic, copy) MCSwipeCompletionBlock deletionBlock;
 
 @end

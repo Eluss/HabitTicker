@@ -8,11 +8,10 @@
 #import "TasksOrganizerViewController.h"
 #import "ALView+PureLayout.h"
 #import "TasksOrganizerTableViewDataSource.h"
+#import "TasksTableView.h"
 
 
-@implementation TasksOrganizerViewController {
-    TasksOrganizerTableViewDataSource *_dataSource;
-}
+@implementation TasksOrganizerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,12 +21,9 @@
 
 - (void)setupView {
     self.view.backgroundColor = [UIColor redColor];
-    UITableView *tasksTableView = [UITableView new];
-    [tasksTableView registerClass:[MCSwipeTableViewCell class] forCellReuseIdentifier:@"taskCell"];
 
-    _dataSource = [TasksOrganizerTableViewDataSource new];
-    tasksTableView.delegate = self;
-    tasksTableView.dataSource = _dataSource;
+    TasksOrganizerTableViewDataSource *tableViewDataSource = [TasksOrganizerTableViewDataSource new];
+    TasksTableView *tasksTableView = [[TasksTableView alloc] initWithDataSource:tableViewDataSource date:[NSDate date]];
 
     [self.view addSubview:tasksTableView];
     [tasksTableView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];

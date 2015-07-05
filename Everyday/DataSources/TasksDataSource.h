@@ -12,4 +12,5 @@
 
 - (RACSignal *)tasksForDate:(NSDate *)date;
 
+- (RACSignal *)defaultTasks;
 @end

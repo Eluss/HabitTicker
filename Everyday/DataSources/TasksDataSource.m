@@ -37,24 +37,39 @@
         array = [rootObject valueForKey:key];
     }
     if ([array count] == 0) {
-        return [self createTasks];
+        return [self loadDefaultTasks];
     } else {
         return array;
     }
 }
 
-- (NSArray *)createTasks {
-//    NSMutableArray *array = [NSMutableArray new];
-//    for (NSInteger i = 0; i < 20; i++) {
-//        NSString *string = [NSString stringWithFormat:@"Object nr %d", i];
-//        Task *homeworkTask = [[Task alloc] initWithName:string isDone:NO];
-//        [array addObject:homeworkTask];
-//    }
-//    return array;
-
-    Task *homeworkTask = [[Task alloc] initWithName:@"Homework" isDone:NO];
-    Task *pianoTask = [[Task alloc] initWithName:@"Piano Lesson" isDone:YES];
-    return @[homeworkTask, pianoTask];
+- (RACSignal *)defaultTasks {
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        NSArray *tasks = [self loadDefaultTasks];
+        [subscriber sendNext:tasks];
+        [subscriber sendCompleted];
+        return nil;
+    }];
 }
 
+- (NSArray *)loadDefaultTasks {
+
+    NSString *key = @"defaultTasks";
+    NSString *path = @"~/Documents/";
+
+    path = [path stringByAppendingString:key];
+    path = [path stringByExpandingTildeInPath];
+
+    NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+
+    NSArray *array;
+    if ([rootObject valueForKey:key]) {
+        array = [rootObject valueForKey:key];
+    }
+    if ([array count] == 0) {
+        return [NSArray new];
+    } else {
+        return array;
+    }
+}
 @end
