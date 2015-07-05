@@ -25,10 +25,5 @@
 
 - (instancetype)initWithDate:(NSDate *)date;
 
-- (void)showMessageOnTableView;
-
-- (BOOL)fileExistsForDate:(NSDate *)date;
-
-
 - (void)tasksForDate:(NSDate *)date;
 @end

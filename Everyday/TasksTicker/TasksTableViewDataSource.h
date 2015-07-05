@@ -7,26 +7,12 @@
 #import <MCSwipeTableViewCell/MCSwipeTableViewCell.h>
 #import "UIKit/UIKit.h"
 #import "MCSwipeTableViewCell.h"
+#import "TasksTableViewDataSourceProtocol.h"
 
-@interface TasksTableViewDataSource : NSObject <UITableViewDataSource>
+@interface TasksTableViewDataSource : NSObject <TasksTableViewDataSourceProtocol>
+
 @property(nonatomic, copy) MCSwipeCompletionBlock deletionBlock;
-
-- (void)updateTasksDataForCurrentDate;
-
-- (void)updateTasksDataForDate:(NSDate *)date;
 
 - (id)initWithDate:(NSDate *)date;
 
-- (void)saveArray;
-
-- (void)addCustomRowWithName:(NSString *)name;
-
-
-- (void)removeDataAtIndexPath:(NSIndexPath *)path;
-
-- (void)hideAllCells;
-
-- (void)showAllCells;
-
-- (BOOL)isShowingCells;
 @end

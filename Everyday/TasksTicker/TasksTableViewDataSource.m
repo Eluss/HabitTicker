@@ -31,10 +31,6 @@
     return self;
 }
 
-- (void)updateTasksDataForCurrentDate {
-    [self updateTasksDataForDate:_tasksDate];
-}
-
 - (void)updateTasksDataForDate:(NSDate *)date {
     @weakify(self);
     [_tasksSubscription dispose];
