@@ -11,4 +11,6 @@
 
 @property(nonatomic, copy) MCSwipeCompletionBlock deletionBlock;
 
+@property(nonatomic, strong) TasksTableView *tableView;
+
 @end

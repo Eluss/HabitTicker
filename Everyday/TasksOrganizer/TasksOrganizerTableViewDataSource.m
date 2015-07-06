@@ -4,11 +4,14 @@
 //
 
 #import "TasksOrganizerTableViewDataSource.h"
-#import "MCSwipeTableViewCell.h"
 #import "TasksDataSource.h"
 #import "Task.h"
 #import "AppDelegate.h"
+#import "TasksTableView.h"
+#import "FileChecker.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <PureLayout/PureLayoutDefines.h>
+#import <PureLayout/ALView+PureLayout.h>
 
 
 @implementation TasksOrganizerTableViewDataSource {
@@ -21,6 +24,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _dataArray = [NSArray new];
         _tasksDataSource = [TasksDataSource new];
     }
 
@@ -124,6 +128,39 @@
     }];
 
     return cell;
+}
+
+- (UIView *)showMessageOnTableView {
+    UIView *messageView = [UIView new];
+    UILabel *messageLabel = [UILabel new];
+
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    messageLabel.numberOfLines = 0;
+
+    messageLabel.text = @"Pull to add new tasks to defaults";
+    [messageView addSubview:messageLabel];
+
+    [messageLabel autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero];
+
+    return messageView;
+}
+
+- (void)showMessageIfDateHasNoRecordedData {
+    BOOL fileExists = [FileChecker fileForDefaultTasksExists];
+    if (!fileExists || [self noTasksToPresent]) {
+        self.tableView.backgroundView = [self showMessageOnTableView];
+        [self.tableView reloadData];
+    } else {
+        self.tableView.backgroundView = nil;
+        [self showAllCells];
+        [self updateTasksDataForDate:nil];
+        [self.tableView reloadData];
+    }
+}
+
+- (BOOL)noTasksToPresent {
+    return [_dataArray count] == 0;
 }
 
 @end

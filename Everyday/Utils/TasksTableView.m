@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
         _tableViewDataSource = dataSource;
+        _tableViewDataSource.tableView = self;
         _tasksDate = date;
         
         [self setupView];
@@ -29,10 +30,11 @@
     return self;
 }
 
+
+
 - (void)setupView {
     [self registerClass:[MCSwipeTableViewCell class] forCellReuseIdentifier:@"taskCell"];
     self.delegate = self;
-    self.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.dataSource = _tableViewDataSource;
 
     @weakify(self);
@@ -40,11 +42,11 @@
         @strongify(self);
         [self deleteCell:cell];
         [self->_tableViewDataSource saveArray];
+        [self->_tableViewDataSource showMessageIfDateHasNoRecordedData];
     };
 
     _tableViewDataSource.deletionBlock = cellDeletionBlock;
-
-    [self showMessageIfDateHasNoRecordedData];
+    [_tableViewDataSource showMessageIfDateHasNoRecordedData];
 }
 
 - (void)deleteCell:(MCSwipeTableViewCell *)cell {
@@ -53,49 +55,6 @@
     [_tableViewDataSource removeDataAtIndexPath:indexPath];
     [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [self endUpdates];
-}
-
-- (void)showMessageIfDateHasNoRecordedData {
-    BOOL fileExists = [FileChecker fileExistsForDate:_tasksDate];
-    if (fileExists) {
-        self.backgroundView = nil;
-        [_tableViewDataSource showAllCells];
-        [_tableViewDataSource updateTasksDataForDate:_tasksDate];
-        [self reloadData];
-    } else {
-        [self showMessageOnTableView];
-        [_tableViewDataSource hideAllCells];
-        [self reloadData];
-    }
-}
-
-- (void)showMessageOnTableView {
-    UIView *messageView = [UIView new];
-    UILabel *messageLabel = [UILabel new];
-
-    messageLabel.textAlignment = NSTextAlignmentCenter;
-    messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    messageLabel.numberOfLines = 0;
-
-    messageLabel.text = @"tap the screen to add this day to statistics";
-    [messageView addSubview:messageLabel];
-
-    [messageLabel autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero];
-
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapTableViewBackground)];
-    [messageView addGestureRecognizer:gestureRecognizer];
-
-    self.backgroundView = messageView;
-
-}
-
-- (void)didTapTableViewBackground {
-    if (![_tableViewDataSource isShowingCells]) {
-        self.backgroundView = nil;
-        [_tableViewDataSource showAllCells];
-        [_tableViewDataSource updateTasksDataForDate:_tasksDate];
-        [self reloadData];
-    }
 }
 
 
@@ -131,13 +90,14 @@
 
         [self endUpdates];
         [_tableViewDataSource saveArray];
+        [_tableViewDataSource showMessageIfDateHasNoRecordedData];
     }
 }
 
 - (void)updateTasksForDate:(NSDate *)date {
     _tasksDate = date;
     [_tableViewDataSource updateTasksDataForDate:date];
-    [self showMessageIfDateHasNoRecordedData];
+    [_tableViewDataSource showMessageIfDateHasNoRecordedData];
     [self reloadData];
 }
 @end

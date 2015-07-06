@@ -10,4 +10,5 @@
 
 + (BOOL)fileExistsForDate:(NSDate *)date;
 
++ (BOOL)fileForDefaultTasksExists;
 @end

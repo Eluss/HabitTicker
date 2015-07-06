@@ -13,6 +13,7 @@
 
 @property(nonatomic, copy) MCSwipeCompletionBlock deletionBlock;
 
-- (id)initWithDate:(NSDate *)date;
+@property(nonatomic, strong) TasksTableView *tableView;
 
+- (id)initWithDate:(NSDate *)date;
 @end

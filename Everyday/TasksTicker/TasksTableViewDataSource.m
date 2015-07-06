@@ -3,14 +3,17 @@
 // Copyright (c) 2015 __eSAWProducts__. All rights reserved.
 //
 
+#import <PureLayout/PureLayoutDefines.h>
+#import <PureLayout/ALView+PureLayout.h>
 #import "TasksTableViewDataSource.h"
-#import "MCSwipeTableViewCell.h"
 #import "RACEXTScope.h"
 #import "TasksDataSource.h"
 #import "RACSignal.h"
 #import "RACDisposable.h"
 #import "Task.h"
 #import "AppDelegate.h"
+#import "TasksTableView.h"
+#import "FileChecker.h"
 
 @implementation TasksTableViewDataSource {
 
@@ -172,5 +175,47 @@
 
 - (BOOL)isShowingCells {
     return !_hasNoFileForData;
+}
+
+- (UIView *)showMessageOnTableView {
+    UIView *messageView = [UIView new];
+    UILabel *messageLabel = [UILabel new];
+
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    messageLabel.numberOfLines = 0;
+
+    messageLabel.text = @"tap the screen to add this day to statistics";
+    [messageView addSubview:messageLabel];
+
+    [messageLabel autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero];
+
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapTableViewBackground)];
+    [messageView addGestureRecognizer:gestureRecognizer];
+
+    return messageView;
+}
+
+- (void)didTapTableViewBackground {
+    if (![self isShowingCells]) {
+        self.tableView.backgroundView = nil;
+        [self showAllCells];
+        [self updateTasksDataForDate:_tasksDate];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)showMessageIfDateHasNoRecordedData {
+    BOOL fileExists = [FileChecker fileExistsForDate:_tasksDate];
+    if (fileExists) {
+        self.tableView.backgroundView = nil;
+        [self showAllCells];
+        [self updateTasksDataForDate:_tasksDate];
+        [self.tableView reloadData];
+    } else {
+        self.tableView.backgroundView = [self showMessageOnTableView];
+        [self hideAllCells];
+        [self.tableView reloadData];
+    }
 }
 @end

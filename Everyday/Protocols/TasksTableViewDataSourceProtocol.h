@@ -6,9 +6,13 @@
 #import <Foundation/Foundation.h>
 #import "MCSwipeTableViewCell.h"
 
+@class TasksTableView;
+
 @protocol TasksTableViewDataSourceProtocol <UITableViewDataSource>
 
 @property(nonatomic, copy) MCSwipeCompletionBlock deletionBlock;
+
+@property(nonatomic, strong) TasksTableView *tableView;
 
 - (void)updateTasksDataForDate:(NSDate *)date;
 
@@ -24,5 +28,8 @@
 
 - (BOOL)isShowingCells;
 
+- (UIView *)showMessageOnTableView;
+
+- (void)showMessageIfDateHasNoRecordedData;
 
 @end

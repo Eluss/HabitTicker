@@ -13,6 +13,9 @@
 
 - (instancetype)initWithDataSource:(id <TasksTableViewDataSourceProtocol>)dataSource date:(NSDate *)date;
 
+@property(nonatomic, strong) TasksTableView *tableView;
+
+- (void)showTextFieldAlert;
 
 - (void)updateTasksForDate:(NSDate *)date;
 @end

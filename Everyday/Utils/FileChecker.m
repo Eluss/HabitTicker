@@ -23,4 +23,16 @@
     return exists;
 }
 
++ (BOOL)fileForDefaultTasksExists {
+
+    NSString *key = @"defaultTasks";
+    NSString *path = @"~/Documents/";
+    path = [path stringByAppendingString:key];
+    path = [path stringByExpandingTildeInPath];
+
+    NSFileManager *fileManager = [NSFileManager new];
+    BOOL exists = [fileManager fileExistsAtPath:path];
+    return exists;
+}
+
 @end
