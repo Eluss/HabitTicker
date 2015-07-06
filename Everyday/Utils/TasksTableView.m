@@ -14,7 +14,6 @@
 
 @implementation TasksTableView {
     id <TasksTableViewDataSourceProtocol> _tableViewDataSource;
-    NSDate *_tasksDate;
 }
 
 - (instancetype)initWithDataSource:(id <TasksTableViewDataSourceProtocol>)dataSource date:(NSDate *)date {
@@ -22,8 +21,7 @@
     if (self) {
         _tableViewDataSource = dataSource;
         _tableViewDataSource.tableView = self;
-        _tasksDate = date;
-        
+
         [self setupView];
     }
 
@@ -95,7 +93,6 @@
 }
 
 - (void)updateTasksForDate:(NSDate *)date {
-    _tasksDate = date;
     [_tableViewDataSource updateTasksDataForDate:date];
     [_tableViewDataSource showMessageIfDateHasNoRecordedData];
     [self reloadData];
