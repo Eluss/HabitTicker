@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33821A24D0FF611594879 /* TasksPageViewController.m */; };
+		3FF33B273E34382C9E808DED /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */; };
 		3FF33CDA22FA0EE0397A46AD /* TasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */; };
 		5C22306C7386D1FEFD6FDBD3 /* FileChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223F3E175407DE261AFD01 /* FileChecker.m */; };
 		5C22313A4E0180B24D36D130 /* EverydayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AB6E3BE97262E85855C /* EverydayTests.m */; };
@@ -37,10 +38,12 @@
 
 /* Begin PBXFileReference section */
 		05184D36192553B0F54C09AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3FF334429A25A89531ECA8C6 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		3FF33821A24D0FF611594879 /* TasksPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksPageViewController.m; sourceTree = "<group>"; };
 		3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableView.m; sourceTree = "<group>"; };
 		3FF338C7D5F71B5B7A455103 /* TasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableView.h; sourceTree = "<group>"; };
 		3FF339AF20EC3B5F6D549EF7 /* TasksPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksPageViewController.h; sourceTree = "<group>"; };
+		3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		3FF33E834D45FF794F3ED4DD /* TasksTableViewDataSourceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewDataSourceProtocol.h; sourceTree = "<group>"; };
 		5C223031F7D796B09774A022 /* FileChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileChecker.h; sourceTree = "<group>"; };
 		5C223107B677172789367380 /* DataSwiperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSwiperView.m; sourceTree = "<group>"; };
@@ -98,6 +101,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3FF33B730DF59600CCFC3BCF /* TasksStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */,
+				3FF334429A25A89531ECA8C6 /* StatisticsViewController.h */,
+			);
+			path = TasksStatistics;
+			sourceTree = "<group>";
+		};
 		3FF33F1070401AB9AAAE3D0C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +152,7 @@
 				3FF339AF20EC3B5F6D549EF7 /* TasksPageViewController.h */,
 				3FF33369BAD7374235141F3C /* Resources */,
 				3FF33F1070401AB9AAAE3D0C /* Protocols */,
+				3FF33B730DF59600CCFC3BCF /* TasksStatistics */,
 			);
 			path = Everyday;
 			sourceTree = "<group>";
@@ -371,6 +384,7 @@
 				5C22306C7386D1FEFD6FDBD3 /* FileChecker.m in Sources */,
 				3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */,
 				3FF33CDA22FA0EE0397A46AD /* TasksTableView.m in Sources */,
+				3FF33B273E34382C9E808DED /* StatisticsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

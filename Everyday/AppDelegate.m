@@ -12,6 +12,7 @@
 #import "TasksOrganizerTableViewDataSource.h"
 #import "TasksOrganizerViewController.h"
 #import "TasksPageViewController.h"
+#import "StatisticsViewController.h"
 
 
 @interface AppDelegate ()
@@ -38,8 +39,12 @@
     TasksOrganizerViewController *organizerViewController = [TasksOrganizerViewController new];
     organizerViewController.title = @"Everyday Organizer";
 
+    StatisticsViewController *statisticsViewController = [StatisticsViewController new];
+    statisticsViewController.title = @"Statistics";
+
     [tabBarController addChildViewController:tasksPageViewController];
     [tabBarController addChildViewController:organizerViewController];
+    [tabBarController addChildViewController:statisticsViewController];
 
     return YES;
 }
