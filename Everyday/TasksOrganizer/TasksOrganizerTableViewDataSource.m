@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TasksTableView.h"
 #import "FileChecker.h"
+#import "TasksSaver.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <PureLayout/PureLayoutDefines.h>
 #import <PureLayout/ALView+PureLayout.h>
@@ -42,32 +43,7 @@
 }
 
 - (void)saveArray {
-    NSString *key = @"defaultTasks";
-    NSString *path = @"~/Documents/";
-
-    path = [path stringByAppendingString:key];
-    path = [path stringByExpandingTildeInPath];
-
-
-    NSMutableDictionary *rootObject = [self loadRootDictionary];
-    [rootObject setValue:_dataArray forKey:key];
-
-
-    [NSKeyedArchiver archiveRootObject:rootObject toFile:path];
-}
-
-- (NSMutableDictionary *)loadRootDictionary {
-    NSString *key = @"defaultTasks";
-    NSString *path = @"~/Documents/";
-
-    path = [path stringByAppendingString:key];
-    path = [path stringByExpandingTildeInPath];
-
-    NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    if (rootObject == nil) {
-        return [NSMutableDictionary dictionary];
-    }
-    return rootObject;
+    [TasksSaver saveDefaultTasks:_dataArray];
 }
 
 - (void)addCustomRowWithName:(NSString *)name {
@@ -148,6 +124,7 @@
 
 - (void)showMessageIfDateHasNoRecordedData {
     BOOL fileExists = [FileChecker fileForDefaultTasksExists];
+    [self updateTasksDataForDate:nil];
     if (!fileExists || [self noTasksToPresent]) {
         self.tableView.backgroundView = [self showMessageOnTableView];
         [self.tableView reloadData];

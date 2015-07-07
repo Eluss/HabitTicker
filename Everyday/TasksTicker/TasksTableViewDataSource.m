@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "TasksTableView.h"
 #import "FileChecker.h"
+#import "TasksSaver.h"
 
 @implementation TasksTableViewDataSource {
 
@@ -121,36 +122,9 @@
 }
 
 - (void)saveArray {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"dd.MM.yyyy";
-    NSString *key = [dateFormatter stringFromDate:_tasksDate];
-
-    NSString *path = @"~/Documents/";
-    path = [path stringByAppendingString:key];
-    path = [path stringByExpandingTildeInPath];
-
-
-    NSMutableDictionary *rootObject = [self loadRootDictionary];
-    [rootObject setValue:_dataArray forKey:key];
-
-
-    [NSKeyedArchiver archiveRootObject:rootObject toFile:path];
+    [TasksSaver saveTasks:_dataArray ForDate:_tasksDate];
 }
 
-- (NSMutableDictionary *)loadRootDictionary {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"dd.MM.yyyy";
-    NSString *key = [dateFormatter stringFromDate:_tasksDate];
-
-    NSString *path = @"~/Documents/";
-    path = [path stringByAppendingString:key];
-    path = [path stringByExpandingTildeInPath];
-    NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    if (rootObject == nil) {
-        return [NSMutableDictionary dictionary];
-    }
-    return rootObject;
-}
 
 - (void)addCustomRowWithName:(NSString *)name {
     NSMutableArray *array = [_dataArray mutableCopy];

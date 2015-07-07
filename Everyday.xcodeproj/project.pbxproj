@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FF33528D0EF6DCC705C40BA /* NSDate+StringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33C033644EADBE3F3B68C /* NSDate+StringFormatter.m */; };
+		3FF336C3420710731128ACA8 /* TasksSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF336355490372398D709C8 /* TasksSaver.m */; };
+		3FF337D68DEC2F3F03A53983 /* TasksLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33C3D7BCCCF80C92E98D2 /* TasksLoader.m */; };
 		3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33821A24D0FF611594879 /* TasksPageViewController.m */; };
 		3FF33B273E34382C9E808DED /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */; };
 		3FF33CDA22FA0EE0397A46AD /* TasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */; };
@@ -39,11 +42,17 @@
 /* Begin PBXFileReference section */
 		05184D36192553B0F54C09AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3FF334429A25A89531ECA8C6 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
+		3FF3353ACF6E8FB13BE2A402 /* TasksSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksSaver.h; sourceTree = "<group>"; };
+		3FF336355490372398D709C8 /* TasksSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksSaver.m; sourceTree = "<group>"; };
+		3FF33655C994FC36AF77F74B /* NSDate+StringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StringFormatter.h"; sourceTree = "<group>"; };
 		3FF33821A24D0FF611594879 /* TasksPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksPageViewController.m; sourceTree = "<group>"; };
 		3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableView.m; sourceTree = "<group>"; };
 		3FF338C7D5F71B5B7A455103 /* TasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableView.h; sourceTree = "<group>"; };
 		3FF339AF20EC3B5F6D549EF7 /* TasksPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksPageViewController.h; sourceTree = "<group>"; };
+		3FF33A01D3A4460D5D8070F3 /* TasksLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksLoader.h; sourceTree = "<group>"; };
 		3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
+		3FF33C033644EADBE3F3B68C /* NSDate+StringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+StringFormatter.m"; sourceTree = "<group>"; };
+		3FF33C3D7BCCCF80C92E98D2 /* TasksLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksLoader.m; sourceTree = "<group>"; };
 		3FF33E834D45FF794F3ED4DD /* TasksTableViewDataSourceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewDataSourceProtocol.h; sourceTree = "<group>"; };
 		5C223031F7D796B09774A022 /* FileChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileChecker.h; sourceTree = "<group>"; };
 		5C223107B677172789367380 /* DataSwiperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSwiperView.m; sourceTree = "<group>"; };
@@ -99,6 +108,17 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3FF3358C3EFA1A43DC263993 /* TasksUtils */ = {
+			isa = PBXGroup;
+			children = (
+				3FF336355490372398D709C8 /* TasksSaver.m */,
+				3FF3353ACF6E8FB13BE2A402 /* TasksSaver.h */,
+				3FF33C3D7BCCCF80C92E98D2 /* TasksLoader.m */,
+				3FF33A01D3A4460D5D8070F3 /* TasksLoader.h */,
+			);
+			path = TasksUtils;
 			sourceTree = "<group>";
 		};
 		3FF33B730DF59600CCFC3BCF /* TasksStatistics */ = {
@@ -227,6 +247,9 @@
 				5C223031F7D796B09774A022 /* FileChecker.h */,
 				3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */,
 				3FF338C7D5F71B5B7A455103 /* TasksTableView.h */,
+				3FF3358C3EFA1A43DC263993 /* TasksUtils */,
+				3FF33C033644EADBE3F3B68C /* NSDate+StringFormatter.m */,
+				3FF33655C994FC36AF77F74B /* NSDate+StringFormatter.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -385,6 +408,9 @@
 				3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */,
 				3FF33CDA22FA0EE0397A46AD /* TasksTableView.m in Sources */,
 				3FF33B273E34382C9E808DED /* StatisticsViewController.m in Sources */,
+				3FF336C3420710731128ACA8 /* TasksSaver.m in Sources */,
+				3FF337D68DEC2F3F03A53983 /* TasksLoader.m in Sources */,
+				3FF33528D0EF6DCC705C40BA /* NSDate+StringFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
