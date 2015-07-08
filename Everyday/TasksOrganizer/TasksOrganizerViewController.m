@@ -13,14 +13,20 @@
 
 @implementation TasksOrganizerViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)loadView {
+    [super loadView];
     [self setupView];
 }
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+
 - (void)setupView {
-    self.view.backgroundColor = [UIColor redColor];
+
+    [self setupTitle];
 
     TasksOrganizerTableViewDataSource *tableViewDataSource = [TasksOrganizerTableViewDataSource new];
     TasksTableView *tasksTableView = [[TasksTableView alloc] initWithDataSource:tableViewDataSource date:[NSDate date]];
@@ -28,5 +34,21 @@
     [self.view addSubview:tasksTableView];
     [tasksTableView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];
     [tasksTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:100];
+}
+
+- (void)setupTitle {
+    UIView *titleView = [UIView new];
+    [self.view addSubview:titleView];
+
+    titleView.backgroundColor = [UIColor yellowColor];
+    [titleView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
+    [titleView autoSetDimension:ALDimensionHeight toSize:100];
+
+    UILabel *titleLabel = [UILabel new];
+    [titleView addSubview:titleLabel];
+
+    [titleLabel autoCenterInSuperview];
+
+    titleLabel.text = @"Default tasks";
 }
 @end
