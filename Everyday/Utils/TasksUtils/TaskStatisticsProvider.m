@@ -3,8 +3,11 @@
 // Copyright (c) 2015 __eSAWProducts__. All rights reserved.
 //
 
+#import <DateTools/NSDate+DateTools.h>
 #import "TaskStatisticsProvider.h"
 #import "TaskStatistics.h"
+#import "Task.h"
+#import "TasksLoader.h"
 
 
 @implementation TaskStatisticsProvider
@@ -12,15 +15,15 @@
 + (NSArray *)statisticsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
     NSMutableArray *tasksDaysArray = [self tasksFromDate:fromDate toDate:toDate];
 
-    NSMutableDictionary *notDoneDictionary = [self notDoneDictionaryFromTasks:tasksDaysArray];
     NSMutableDictionary *doneDictionary = [self doneDictionaryFromTasks:tasksDaysArray];
+    NSMutableDictionary *notDoneDictionary = [self notDoneDictionaryFromTasks:tasksDaysArray];
 
     NSMutableArray *resultArray = [self tasksStatisticsWithNotDoneDictionary:notDoneDictionary doneDictionary:doneDictionary];
 
     return resultArray;
 }
 
-- (NSMutableArray *)tasksStatisticsWithNotDoneDictionary:(NSMutableDictionary *)notDoneDictionary doneDictionary:(NSMutableDictionary *)doneDictionary {
++ (NSMutableArray *)tasksStatisticsWithNotDoneDictionary:(NSMutableDictionary *)notDoneDictionary doneDictionary:(NSMutableDictionary *)doneDictionary {
     NSArray *doneKeys = [doneDictionary allKeys];
     NSArray *notDoneKeys = [notDoneDictionary allKeys];
 
@@ -45,11 +48,11 @@
     return resultArray;
 }
 
-- (NSMutableDictionary *)notDoneDictionaryFromTasks:(NSMutableArray *)tasksDaysArray {
++ (NSMutableDictionary *)notDoneDictionaryFromTasks:(NSMutableArray *)tasksDaysArray {
     NSMutableDictionary *notDoneDictionary = [NSMutableDictionary new];
     for (NSArray *array in tasksDaysArray) {
         for (Task *task in array) {
-            if (task.isDone) {
+            if (!task.isDone) {
                 NSNumber *taskCount = notDoneDictionary[task.name];
                 notDoneDictionary[task.name] = @(taskCount.integerValue + 1);
             }
@@ -58,7 +61,7 @@
     return notDoneDictionary;
 }
 
-- (NSMutableDictionary *)doneDictionaryFromTasks:(NSMutableArray *)tasksDaysArray {
++ (NSMutableDictionary *)doneDictionaryFromTasks:(NSMutableArray *)tasksDaysArray {
     NSMutableDictionary *doneDictionary = [NSMutableDictionary new];
     for (NSArray *array in tasksDaysArray) {
         for (Task *task in array) {
@@ -71,7 +74,7 @@
     return doneDictionary;
 }
 
-- (NSMutableArray *)tasksFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
++ (NSMutableArray *)tasksFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
     NSMutableArray *tasksDaysArray = [NSMutableArray new];
     while (fromDate.day <= toDate.day) {
         NSArray *tasks = [TasksLoader loadTasksForDate:fromDate];

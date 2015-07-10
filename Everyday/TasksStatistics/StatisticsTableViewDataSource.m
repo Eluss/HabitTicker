@@ -4,11 +4,13 @@
 //
 
 #import <DateTools/NSDate+DateTools.h>
+#import <PureLayout/ALView+PureLayout.h>
 #import "StatisticsTableViewDataSource.h"
 #import "TasksLoader.h"
 #import "Task.h"
 #import "TaskStatistics.h"
 #import "TaskStatisticsProvider.h"
+#import "StatisticsView.h"
 
 
 @implementation StatisticsTableViewDataSource {
@@ -25,7 +27,7 @@
 
 - (NSArray *)loadData {
     NSDate *fromDate = [NSDate date];
-    fromDate = [fromDate dateByAddingDays:-3];
+    fromDate = [fromDate dateByAddingDays:-7];
     NSDate *toDate = [NSDate date];
 
     NSArray *statistics = [TaskStatisticsProvider statisticsFromDate:fromDate toDate:toDate];
@@ -39,10 +41,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"taskCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"statisticsView"];
 
-    TaskStatistics *task = _tasks[(NSUInteger) indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@  ---- > done: %d notdone:%d", task.name, task.doneCounter, task.notDoneCounter];
+    UIView *statisticsView = [[StatisticsView alloc] initWithTaskStatistics:_tasks[(NSUInteger) indexPath.row]];
+    [cell.contentView addSubview:statisticsView];
+
+    [statisticsView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero];
 
     return cell;
 }
