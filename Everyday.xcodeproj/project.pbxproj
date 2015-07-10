@@ -13,6 +13,7 @@
 		3FF337D68DEC2F3F03A53983 /* TasksLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33C3D7BCCCF80C92E98D2 /* TasksLoader.m */; };
 		3FF338A20954C216B76AD637 /* StatisticsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33099C391B3179FB2F4E3 /* StatisticsTableView.m */; };
 		3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33821A24D0FF611594879 /* TasksPageViewController.m */; };
+		3FF33AB9490D55D67019FCED /* TaskStatisticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF331BE98E4F9514AC931B1 /* TaskStatisticsProvider.m */; };
 		3FF33B273E34382C9E808DED /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */; };
 		3FF33CDA22FA0EE0397A46AD /* TasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */; };
 		3FF33E08FE41BB0BD2C0F9F6 /* TaskStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF339F14493263657DB1F05 /* TaskStatistics.m */; };
@@ -45,10 +46,12 @@
 /* Begin PBXFileReference section */
 		05184D36192553B0F54C09AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3FF33099C391B3179FB2F4E3 /* StatisticsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsTableView.m; sourceTree = "<group>"; };
+		3FF331BE98E4F9514AC931B1 /* TaskStatisticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatisticsProvider.m; sourceTree = "<group>"; };
 		3FF334429A25A89531ECA8C6 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		3FF3353ACF6E8FB13BE2A402 /* TasksSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksSaver.h; sourceTree = "<group>"; };
 		3FF336355490372398D709C8 /* TasksSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksSaver.m; sourceTree = "<group>"; };
 		3FF33655C994FC36AF77F74B /* NSDate+StringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StringFormatter.h"; sourceTree = "<group>"; };
+		3FF33730E49558A08602C7ED /* TaskStatisticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatisticsProvider.h; sourceTree = "<group>"; };
 		3FF33821A24D0FF611594879 /* TasksPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksPageViewController.m; sourceTree = "<group>"; };
 		3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableView.m; sourceTree = "<group>"; };
 		3FF338C7D5F71B5B7A455103 /* TasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableView.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				3FF3353ACF6E8FB13BE2A402 /* TasksSaver.h */,
 				3FF33C3D7BCCCF80C92E98D2 /* TasksLoader.m */,
 				3FF33A01D3A4460D5D8070F3 /* TasksLoader.h */,
+				3FF331BE98E4F9514AC931B1 /* TaskStatisticsProvider.m */,
+				3FF33730E49558A08602C7ED /* TaskStatisticsProvider.h */,
 			);
 			path = TasksUtils;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				3FF338A20954C216B76AD637 /* StatisticsTableView.m in Sources */,
 				3FF33415B20D4D8ED4CBEEF2 /* StatisticsTableViewDataSource.m in Sources */,
 				3FF33E08FE41BB0BD2C0F9F6 /* TaskStatistics.m in Sources */,
+				3FF33AB9490D55D67019FCED /* TaskStatisticsProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
