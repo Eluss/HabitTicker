@@ -30,7 +30,9 @@
     NSMutableArray *tasksDaysArray = [NSMutableArray new];
     while (fromDate.day <= toDate.day) {
         NSArray *tasks = [TasksLoader loadTasksForDate:fromDate];
-        [tasksDaysArray addObject:tasks];
+        if (tasks != nil) {
+            [tasksDaysArray addObject:tasks];
+        }
         fromDate = [fromDate dateByAddingDays:1];
     }
 
@@ -40,7 +42,7 @@
         for (Task *task in array) {
             if (task.isDone) {
                 NSNumber *taskCount = doneDictionary[task.name];
-                doneDictionary[task.name] = @(taskCount.integerValue + 1) ;
+                doneDictionary[task.name] = @(taskCount.integerValue + 1);
             } else {
                 NSNumber *taskCount = notDoneDictionary[task.name];
                 notDoneDictionary[task.name] = @(taskCount.integerValue + 1);

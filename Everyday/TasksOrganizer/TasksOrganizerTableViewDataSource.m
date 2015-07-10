@@ -46,13 +46,6 @@
     [TasksSaver saveDefaultTasks:_dataArray];
 }
 
-- (void)addCustomRowWithName:(NSString *)name {
-    NSMutableArray *array = [_dataArray mutableCopy];
-    Task *task = [[Task alloc] initWithName:name isDone:NO];
-    [array insertObject:task atIndex:0];
-    _dataArray = array;
-}
-
 - (void)removeDataAtIndexPath:(NSIndexPath *)path {
     NSMutableArray *array = [_dataArray mutableCopy];
     [array removeObjectAtIndex:(NSUInteger) path.row];
@@ -134,6 +127,16 @@
         [self updateTasksDataForDate:nil];
         [self.tableView reloadData];
     }
+}
+
+- (void)addCustomRowWithName:(NSString *)name {
+    NSMutableArray *array = [_dataArray mutableCopy];
+    if (!array) {
+        array = [NSMutableArray new];
+    }
+    Task *task = [[Task alloc] initWithName:name isDone:NO];
+    [array insertObject:task atIndex:0];
+    _dataArray = array;
 }
 
 - (BOOL)noTasksToPresent {

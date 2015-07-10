@@ -128,6 +128,9 @@
 
 - (void)addCustomRowWithName:(NSString *)name {
     NSMutableArray *array = [_dataArray mutableCopy];
+    if (!array) {
+        array = [NSMutableArray new];
+    }
     Task *task = [[Task alloc] initWithName:name isDone:NO];
     [array insertObject:task atIndex:0];
     _dataArray = array;
