@@ -41,6 +41,7 @@
     TasksTableViewDataSource *source = [[TasksTableViewDataSource alloc] initWithDate:_tasksDate];
     _tasksTableView = [[TasksTableView alloc] initWithDataSource:source date:_tasksDate];
     _tasksTableView.backgroundColor = [UIColor backgroundColor];
+    _tasksTableView.swiperDelegate = self;
     [self.view addSubview:_tasksTableView];
 
     _dataSwiperView = [[DataSwiperView alloc] initWithDate:_tasksDate];

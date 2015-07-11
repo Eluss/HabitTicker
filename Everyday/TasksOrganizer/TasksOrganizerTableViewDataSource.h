@@ -7,10 +7,12 @@
 #import <UIKit/UIKit.h>
 #import "TasksTableViewDataSourceProtocol.h"
 
+
 @interface TasksOrganizerTableViewDataSource : NSObject <TasksTableViewDataSourceProtocol>
 
 @property(nonatomic, copy) MCSwipeCompletionBlock deletionBlock;
 
 @property(nonatomic, strong) TasksTableView *tableView;
+
 
 @end

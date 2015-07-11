@@ -46,6 +46,7 @@
 
     _tableViewDataSource.deletionBlock = cellDeletionBlock;
     [_tableViewDataSource showMessageIfDateHasNoRecordedData];
+    [self addSwipeGestures];
 }
 
 - (void)deleteCell:(MCSwipeTableViewCell *)cell {
@@ -103,4 +104,24 @@
     return 60;
 }
 
+- (void)addSwipeGestures {
+    UISwipeGestureRecognizer *swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(nextDate)];
+    swipeGestureRecognizerLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self addGestureRecognizer:swipeGestureRecognizerLeft];
+
+    UISwipeGestureRecognizer *swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(previousDate)];
+    swipeGestureRecognizerRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self addGestureRecognizer:swipeGestureRecognizerRight];
+
+
+}
+
+- (void)previousDate {
+    [self.swiperDelegate didMoveToPreviousDate];
+}
+
+- (void)nextDate {
+    [self.swiperDelegate didMoveToNextDate];
+
+}
 @end

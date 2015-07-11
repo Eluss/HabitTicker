@@ -9,11 +9,20 @@
 
 @protocol TasksTableViewDataSourceProtocol;
 
+@protocol TasksTableViewDelegate
+
+@required
+- (void)didMoveToPreviousDate;
+
+- (void)didMoveToNextDate;
+
+@end
+
 @interface TasksTableView : UITableView <UITableViewDelegate>
 
 - (instancetype)initWithDataSource:(id <TasksTableViewDataSourceProtocol>)dataSource date:(NSDate *)date;
 
-@property(nonatomic, strong) TasksTableView *tableView;
+@property(nonatomic, weak) id <TasksTableViewDelegate> swiperDelegate;
 
 - (void)showTextFieldAlert;
 

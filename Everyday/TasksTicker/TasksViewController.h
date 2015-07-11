@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataSwiperView.h"
+#import "TasksTableView.h"
 
 
 @protocol TasksViewControllerDelegate
@@ -19,7 +20,7 @@
 
 @end
 
-@interface TasksViewController : UIViewController <UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate, DataSwiperDelegate>
+@interface TasksViewController : UIViewController <UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate, DataSwiperDelegate, TasksTableViewDelegate>
 
 @property (nonatomic, weak) id <TasksViewControllerDelegate> delegate;
 
