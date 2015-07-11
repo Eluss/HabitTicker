@@ -21,6 +21,7 @@
     if (self) {
         _tableViewDataSource = dataSource;
         _tableViewDataSource.tableView = self;
+        self.rowHeight = 60;
 
         [self setupView];
     }
@@ -64,7 +65,7 @@
 }
 
 - (void)showTextFieldAlert {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"New task" message:@"Add task" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"New task" message:@"name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     av.alertViewStyle = UIAlertViewStylePlainTextInput;
     [av textFieldAtIndex:0].delegate = self;
     [av show];
@@ -97,4 +98,9 @@
     [_tableViewDataSource showMessageIfDateHasNoRecordedData];
     [self reloadData];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
 @end

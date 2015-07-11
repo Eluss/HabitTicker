@@ -6,6 +6,8 @@
 #import <PureLayout/ALView+PureLayout.h>
 #import "StatisticsView.h"
 #import "TaskStatistics.h"
+#import "UIColor+Additions.h"
+#import "Fonts.h"
 
 #define HORIZONTAL_SPACING 20
 
@@ -30,19 +32,21 @@
     [cellView addSubview:nameLabel];
 
     nameLabel.text = _taskStatistics.name;
-
+    nameLabel.font = [Fonts cellFont];
     [nameLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:HORIZONTAL_SPACING];
     [nameLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:cellView];
 
     UILabel *doneLabel = [UILabel new];
     [cellView addSubview:doneLabel];
     doneLabel.text = [NSString stringWithFormat:@"%d", _taskStatistics.doneCounter];
-    doneLabel.textColor = [UIColor greenColor];
+    doneLabel.font = [Fonts cellFont];
+    doneLabel.textColor = [UIColor everydayGreenColor];
 
     UILabel *notDoneLabel = [UILabel new];
     [cellView addSubview:notDoneLabel];
     notDoneLabel.text = [NSString stringWithFormat:@"%d", _taskStatistics.notDoneCounter];
-    notDoneLabel.textColor = [UIColor redColor];
+    notDoneLabel.textColor = [UIColor everydayRedColor];
+    notDoneLabel.font = [Fonts cellFont];
 
     [notDoneLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:HORIZONTAL_SPACING];
     [notDoneLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:cellView];

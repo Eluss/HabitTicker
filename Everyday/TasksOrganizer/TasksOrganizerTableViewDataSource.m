@@ -10,6 +10,8 @@
 #import "TasksTableView.h"
 #import "FileChecker.h"
 #import "TasksSaver.h"
+#import "Fonts.h"
+#import "UIColor+Additions.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <PureLayout/PureLayoutDefines.h>
 #import <PureLayout/ALView+PureLayout.h>
@@ -76,21 +78,19 @@
     NSString *identifier = @"taskCell";
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 
-    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-    cell.contentView.backgroundColor = UIColorFromRGB(0xC9F6FF);
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
-    UIView *leftSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    leftSwipeView.backgroundColor = UIColorFromRGB(0x66FF6B);
-
-    UIView *rightSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    rightSwipeView.backgroundColor = UIColorFromRGB(0xFF6666);
+    CGFloat height = 60;
+    UIView *rightSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, height)];
+    rightSwipeView.backgroundColor = [UIColor everydayRedColor];
 
     Task *cellTask = _dataArray[(NSUInteger) indexPath.row];
 
     cell.textLabel.text = cellTask.name;
+    cell.textLabel.font = [Fonts cellFont];
 
     @weakify(self);
-    UIColor *deletionColor = UIColorFromRGB(0xFF6666);
+    UIColor *deletionColor = [UIColor everydayRedColor];
     [cell setSwipeGestureWithView:rightSwipeView color:deletionColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
         @strongify(self);
         self->_deletionBlock(cell, state, mode);
@@ -106,6 +106,7 @@
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
     messageLabel.numberOfLines = 0;
+    messageLabel.font = [Fonts headerFont];
 
     messageLabel.text = @"Pull to add new tasks to defaults";
     [messageView addSubview:messageLabel];

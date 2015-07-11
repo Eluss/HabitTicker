@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FF3301006648E2B0FF9705F /* List.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3300AD36F6901110185F5 /* List.png */; };
+		3FF3309F48AC7924FD93D9E2 /* Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF332DD78A41F4BE2A7F5A1 /* Fonts.m */; };
+		3FF330D147EF2264141136EC /* Chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF33A969C4EB3230BF77832 /* Chart.png */; };
+		3FF3332FBE336A1E0F9AB18A /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF3368ECEF2F06BB735D254 /* UIColor+Additions.m */; };
+		3FF33370BC4F7C575CF30A68 /* Next.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF33285EEC46F8777355207 /* Next.png */; };
 		3FF33415B20D4D8ED4CBEEF2 /* StatisticsTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33E912299F1BBC7EA8D8F /* StatisticsTableViewDataSource.m */; };
 		3FF33528D0EF6DCC705C40BA /* NSDate+StringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33C033644EADBE3F3B68C /* NSDate+StringFormatter.m */; };
 		3FF336C3420710731128ACA8 /* TasksSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF336355490372398D709C8 /* TasksSaver.m */; };
 		3FF337D68DEC2F3F03A53983 /* TasksLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33C3D7BCCCF80C92E98D2 /* TasksLoader.m */; };
 		3FF338A20954C216B76AD637 /* StatisticsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33099C391B3179FB2F4E3 /* StatisticsTableView.m */; };
+		3FF339B9AA5F7ACEFD387453 /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF33ACB8E2036EE77A27CBC /* Previous.png */; };
 		3FF33AB05A211314B177BDD8 /* TasksPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33821A24D0FF611594879 /* TasksPageViewController.m */; };
 		3FF33AB9490D55D67019FCED /* TaskStatisticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF331BE98E4F9514AC931B1 /* TaskStatisticsProvider.m */; };
 		3FF33B273E34382C9E808DED /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */; };
 		3FF33CDA22FA0EE0397A46AD /* TasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF3383ABA20153B7E6B0D12 /* TasksTableView.m */; };
 		3FF33D0E28954FCF4EEFCA33 /* TaskStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF334AC2577DA632BD4592D /* TaskStatistics.m */; };
 		3FF33D3178C2F4C90ED1014A /* StatisticsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF336D8DFE8F442CC79DDFE /* StatisticsView.m */; };
+		3FF33EFABF32FAB6A0C1005D /* Ticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF33F10219AC987F8A14890 /* Ticker.png */; };
 		5C22306C7386D1FEFD6FDBD3 /* FileChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223F3E175407DE261AFD01 /* FileChecker.m */; };
 		5C22313A4E0180B24D36D130 /* EverydayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223AB6E3BE97262E85855C /* EverydayTests.m */; };
 		5C22322C2F650157A4B82A02 /* TasksDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C223749B8AE24CFB3AB4DB2 /* TasksDataSource.m */; };
@@ -46,14 +53,18 @@
 
 /* Begin PBXFileReference section */
 		05184D36192553B0F54C09AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3FF3300AD36F6901110185F5 /* List.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = List.png; sourceTree = "<group>"; };
 		3FF33099C391B3179FB2F4E3 /* StatisticsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsTableView.m; sourceTree = "<group>"; };
 		3FF331A85EA45111A037A88B /* TaskStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatistics.h; sourceTree = "<group>"; };
 		3FF331BE98E4F9514AC931B1 /* TaskStatisticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatisticsProvider.m; sourceTree = "<group>"; };
+		3FF33285EEC46F8777355207 /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next.png; sourceTree = "<group>"; };
+		3FF332DD78A41F4BE2A7F5A1 /* Fonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fonts.m; sourceTree = "<group>"; };
 		3FF334429A25A89531ECA8C6 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		3FF334AC2577DA632BD4592D /* TaskStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatistics.m; sourceTree = "<group>"; };
 		3FF3353ACF6E8FB13BE2A402 /* TasksSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksSaver.h; sourceTree = "<group>"; };
 		3FF336355490372398D709C8 /* TasksSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksSaver.m; sourceTree = "<group>"; };
 		3FF33655C994FC36AF77F74B /* NSDate+StringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+StringFormatter.h"; sourceTree = "<group>"; };
+		3FF3368ECEF2F06BB735D254 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
 		3FF336D8DFE8F442CC79DDFE /* StatisticsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsView.m; sourceTree = "<group>"; };
 		3FF33730E49558A08602C7ED /* TaskStatisticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatisticsProvider.h; sourceTree = "<group>"; };
 		3FF33821A24D0FF611594879 /* TasksPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksPageViewController.m; sourceTree = "<group>"; };
@@ -61,14 +72,19 @@
 		3FF338C7D5F71B5B7A455103 /* TasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableView.h; sourceTree = "<group>"; };
 		3FF339AF20EC3B5F6D549EF7 /* TasksPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksPageViewController.h; sourceTree = "<group>"; };
 		3FF33A01D3A4460D5D8070F3 /* TasksLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksLoader.h; sourceTree = "<group>"; };
+		3FF33A42A6A1062A1BACA427 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		3FF33A7B11B002D0602410B5 /* StatisticsTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsTableViewDataSource.h; sourceTree = "<group>"; };
 		3FF33A957A743742BC9B911B /* StatisticsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsTableView.h; sourceTree = "<group>"; };
+		3FF33A969C4EB3230BF77832 /* Chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chart.png; sourceTree = "<group>"; };
+		3FF33ACB8E2036EE77A27CBC /* Previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Previous.png; sourceTree = "<group>"; };
 		3FF33B465DAE51BFA9116F50 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		3FF33C033644EADBE3F3B68C /* NSDate+StringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+StringFormatter.m"; sourceTree = "<group>"; };
 		3FF33C3D7BCCCF80C92E98D2 /* TasksLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksLoader.m; sourceTree = "<group>"; };
 		3FF33C48BDE21085DE9946E6 /* StatisticsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsView.h; sourceTree = "<group>"; };
 		3FF33E834D45FF794F3ED4DD /* TasksTableViewDataSourceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewDataSourceProtocol.h; sourceTree = "<group>"; };
 		3FF33E912299F1BBC7EA8D8F /* StatisticsTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsTableViewDataSource.m; sourceTree = "<group>"; };
+		3FF33F10219AC987F8A14890 /* Ticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ticker.png; sourceTree = "<group>"; };
+		3FF33FDB37F4DF7133DE5F68 /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fonts.h; sourceTree = "<group>"; };
 		5C223031F7D796B09774A022 /* FileChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileChecker.h; sourceTree = "<group>"; };
 		5C223107B677172789367380 /* DataSwiperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSwiperView.m; sourceTree = "<group>"; };
 		5C2231670C0989875E8F23AE /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
@@ -121,6 +137,11 @@
 		3FF33369BAD7374235141F3C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3FF33285EEC46F8777355207 /* Next.png */,
+				3FF33ACB8E2036EE77A27CBC /* Previous.png */,
+				3FF33A969C4EB3230BF77832 /* Chart.png */,
+				3FF3300AD36F6901110185F5 /* List.png */,
+				3FF33F10219AC987F8A14890 /* Ticker.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -275,6 +296,10 @@
 				3FF33655C994FC36AF77F74B /* NSDate+StringFormatter.h */,
 				3FF334AC2577DA632BD4592D /* TaskStatistics.m */,
 				3FF331A85EA45111A037A88B /* TaskStatistics.h */,
+				3FF332DD78A41F4BE2A7F5A1 /* Fonts.m */,
+				3FF33FDB37F4DF7133DE5F68 /* Fonts.h */,
+				3FF3368ECEF2F06BB735D254 /* UIColor+Additions.m */,
+				3FF33A42A6A1062A1BACA427 /* UIColor+Additions.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -370,6 +395,11 @@
 			files = (
 				5C2233B253FC3E60236C6194 /* Images.xcassets in Resources */,
 				5C223B8C5647885DD4D52CDB /* LaunchScreen.xib in Resources */,
+				3FF33370BC4F7C575CF30A68 /* Next.png in Resources */,
+				3FF339B9AA5F7ACEFD387453 /* Previous.png in Resources */,
+				3FF330D147EF2264141136EC /* Chart.png in Resources */,
+				3FF3301006648E2B0FF9705F /* List.png in Resources */,
+				3FF33EFABF32FAB6A0C1005D /* Ticker.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +471,8 @@
 				3FF33AB9490D55D67019FCED /* TaskStatisticsProvider.m in Sources */,
 				3FF33D0E28954FCF4EEFCA33 /* TaskStatistics.m in Sources */,
 				3FF33D3178C2F4C90ED1014A /* StatisticsView.m in Sources */,
+				3FF3309F48AC7924FD93D9E2 /* Fonts.m in Sources */,
+				3FF3332FBE336A1E0F9AB18A /* UIColor+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

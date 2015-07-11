@@ -8,6 +8,8 @@
 #import "StatisticsTableView.h"
 #import "StatisticsTableViewDataSource.h"
 #import "StatisticsView.h"
+#import "Fonts.h"
+#import "UIColor+Additions.h"
 
 
 @implementation StatisticsViewController
@@ -22,7 +24,6 @@
     self.view.backgroundColor = [UIColor redColor];
 }
 
-
 - (void)setupView {
     [self setupTitle];
 
@@ -35,13 +36,14 @@
 
     [statisticsTableView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];
     [statisticsTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.view withOffset:100];
+    statisticsTableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
 }
 
 - (void)setupTitle {
     UIView *titleView = [UIView new];
     [self.view addSubview:titleView];
+    titleView.backgroundColor = [UIColor headerColor];
 
-    titleView.backgroundColor = [UIColor yellowColor];
     [titleView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
     [titleView autoSetDimension:ALDimensionHeight toSize:100];
 
@@ -51,5 +53,14 @@
     [titleLabel autoCenterInSuperview];
 
     titleLabel.text = @"Statistics";
+    titleLabel.font = [Fonts headerFont];
+
+
+    UIView *stripe = [UIView new];
+    [titleView addSubview:stripe];
+    stripe.backgroundColor = [UIColor blackColor];
+
+    [stripe autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeTop];
+    [stripe autoSetDimension:ALDimensionHeight toSize:1];
 }
 @end

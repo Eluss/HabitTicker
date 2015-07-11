@@ -42,8 +42,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"statisticsView"];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
-    UIView *statisticsView = [[StatisticsView alloc] initWithTaskStatistics:_tasks[(NSUInteger) indexPath.row]];
+    StatisticsView *statisticsView = [[StatisticsView alloc] initWithTaskStatistics:_tasks[(NSUInteger) indexPath.row]];
     [cell.contentView addSubview:statisticsView];
 
     [statisticsView autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero];

@@ -8,6 +8,8 @@
 #import "NSDate+DateTools.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "AppDelegate.h"
+#import "Fonts.h"
+#import "UIColor+Additions.h"
 
 
 @implementation DataSwiperView {
@@ -27,27 +29,32 @@
 
 - (void)setupView {
 
-    self.backgroundColor = UIColorFromRGB(0x6696FF);
+    self.backgroundColor = [UIColor headerColor];
     UIButton *leftButton = [UIButton new];
-    [leftButton setTitle:@"<" forState:UIControlStateNormal];
+    UIImage *previousImage = [UIImage imageNamed:@"Previous"];
+    [leftButton setImage:previousImage forState:UIControlStateNormal];
     [self addSubview:leftButton];
-    [leftButton autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeRight];
+    [leftButton autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self];
+    [leftButton autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:20];
     [leftButton autoSetDimension:ALDimensionWidth toSize:50];
     [leftButton addTarget:self action:@selector(previousDate) forControlEvents:UIControlEventTouchUpInside];
 
-    UIButton *rightbutton = [UIButton new];
-    [rightbutton setTitle:@">" forState:UIControlStateNormal];
-    [self addSubview:rightbutton];
-    [rightbutton autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero excludingEdge:ALEdgeLeft];
-    [rightbutton autoSetDimension:ALDimensionWidth toSize:50];
-    [rightbutton addTarget:self action:@selector(nextDate) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *rightButton = [UIButton new];
+    UIImage *nextImage = [UIImage imageNamed:@"Next"];
+    [rightButton setImage:nextImage forState:UIControlStateNormal];
+    [self addSubview:rightButton];
+    [rightButton autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self];
+    [rightButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:20];
+    [rightButton autoSetDimension:ALDimensionWidth toSize:50];
+    [rightButton addTarget:self action:@selector(nextDate) forControlEvents:UIControlEventTouchUpInside];
 
     _dataLabel = [UILabel new];
     [self addSubview:_dataLabel];
     _dataLabel.textAlignment = NSTextAlignmentCenter;
+    _dataLabel.font = [Fonts headerFont];
 
     [_dataLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:leftButton];
-    [_dataLabel autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:rightbutton];
+    [_dataLabel autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:rightButton];
     [_dataLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self];
 
     if (self.swiperDate == nil) {

@@ -11,10 +11,11 @@
 #import "RACSignal.h"
 #import "RACDisposable.h"
 #import "Task.h"
-#import "AppDelegate.h"
 #import "TasksTableView.h"
 #import "FileChecker.h"
 #import "TasksSaver.h"
+#import "UIColor+Additions.h"
+#import "Fonts.h"
 
 @implementation TasksTableViewDataSource {
 
@@ -69,21 +70,22 @@
     NSString *identifier = @"taskCell";
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 
-    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-    cell.contentView.backgroundColor = UIColorFromRGB(0xC9F6FF);
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    cell.contentView.backgroundColor = UIColorFromRGB(0xC9F6FF);
+    CGFloat height = 60;
+    UIView *leftSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, height)];
+    leftSwipeView.backgroundColor = [UIColor everydayGreenColor];
 
-    UIView *leftSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    leftSwipeView.backgroundColor = UIColorFromRGB(0x66FF6B);
-
-    UIView *rightSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    rightSwipeView.backgroundColor = UIColorFromRGB(0xFF6666);
+    UIView *rightSwipeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, height)];
+    rightSwipeView.backgroundColor = [UIColor everydayRedColor];
 
     Task *cellTask = _dataArray[(NSUInteger) indexPath.row];
 
     cell.textLabel.text = cellTask.name;
+    cell.textLabel.font = [Fonts cellFont];
 
 
-    UIColor *color = UIColorFromRGB(0x66FF6B);
+    UIColor *color = [UIColor everydayGreenColor];
     @weakify(self);
     [cell setSwipeGestureWithView:leftSwipeView color:color mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
         @strongify(self);
@@ -91,7 +93,7 @@
         [self updateCell:cell forTask:cellTask];
     }];
 
-    UIColor *deletionColor = UIColorFromRGB(0xFF6666);
+    UIColor *deletionColor = [UIColor everydayRedColor];
     [cell setSwipeGestureWithView:rightSwipeView color:deletionColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
         @strongify(self);
         self->_deletionBlock(cell, state, mode);
@@ -107,11 +109,11 @@
 
 - (void)updateCell:(MCSwipeTableViewCell *)cell forTask:(Task *)task {
     if (task.isDone) {
-        cell.contentView.backgroundColor = UIColorFromRGB(0x66FF6B);
-        cell.textLabel.textColor = [UIColor grayColor];
+        cell.contentView.backgroundColor = [UIColor everydayGreenColor];
+//        cell.textLabel.textColor = [UIColor lightGrayColor];
     } else {
-        cell.contentView.backgroundColor = UIColorFromRGB(0xC9F6FF);
-        cell.textLabel.textColor = [UIColor blackColor];
+        cell.contentView.backgroundColor = [UIColor everydayRedColor];
+//        cell.textLabel.textColor = [UIColor blackColor];
     }
 
     [self saveArray];
@@ -161,8 +163,9 @@
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
     messageLabel.numberOfLines = 0;
+    messageLabel.font = [Fonts headerFont];
 
-    messageLabel.text = @"tap the screen to add this day to statistics";
+    messageLabel.text = @"Tap the screen to add this day to statistics";
     [messageView addSubview:messageLabel];
 
     [messageLabel autoPinEdgesToSuperviewEdgesWithInsets:ALEdgeInsetsZero];
@@ -184,6 +187,7 @@
 
 - (void)showMessageIfDateHasNoRecordedData {
     BOOL fileExists = [FileChecker fileExistsForDate:_tasksDate];
+    [self updateTasksDataForDate:_tasksDate];
     if (fileExists) {
         self.tableView.backgroundView = nil;
         [self showAllCells];
@@ -195,4 +199,6 @@
         [self.tableView reloadData];
     }
 }
+
+
 @end

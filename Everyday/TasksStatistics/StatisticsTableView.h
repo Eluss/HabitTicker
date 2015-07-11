@@ -9,6 +9,6 @@
 @class StatisticsTableViewDataSource;
 
 
-@interface StatisticsTableView : UITableView
+@interface StatisticsTableView : UITableView <UITableViewDelegate>
 - (instancetype)initWithDataSource:(StatisticsTableViewDataSource *)source;
 @end

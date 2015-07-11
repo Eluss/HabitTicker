@@ -25,26 +25,29 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     UITabBarController *tabBarController = [UITabBarController new];
+
     self.window.rootViewController = tabBarController;
 
     TasksPageViewController *tasksPageViewController = [[TasksPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                                                         options:nil];
 
-    tasksPageViewController.title = @"Everyday ticker swiper";
-
-    TasksViewController *tickerViewController = [TasksViewController new];
-    tickerViewController.title = @"Everyday Ticker";
+    tasksPageViewController.tabBarItem.image = [UIImage imageNamed:@"Ticker"];
+    tasksPageViewController.title = @"Ticker";
 
     TasksOrganizerViewController *organizerViewController = [TasksOrganizerViewController new];
-    organizerViewController.title = @"Everyday Organizer";
+    organizerViewController.tabBarItem.image = [UIImage imageNamed:@"List"];
+    organizerViewController.title = @"Defaults";
 
     StatisticsViewController *statisticsViewController = [StatisticsViewController new];
-    statisticsViewController.title = @"Statistics";
+    statisticsViewController.tabBarItem.image = [UIImage imageNamed:@"Chart"];
+    statisticsViewController.title = @"Stats";
 
     [tabBarController addChildViewController:tasksPageViewController];
     [tabBarController addChildViewController:organizerViewController];
     [tabBarController addChildViewController:statisticsViewController];
+
+
 
     return YES;
 }

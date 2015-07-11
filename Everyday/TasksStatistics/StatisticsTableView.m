@@ -22,5 +22,12 @@
 
 - (void)setupView {
     self.dataSource = _dataSource;
+    self.delegate = self;
+    self.rowHeight = 60;
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 @end

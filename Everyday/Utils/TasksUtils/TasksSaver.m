@@ -6,6 +6,7 @@
 #import "TasksSaver.h"
 #import "TasksLoader.h"
 #import "NSDate+StringFormatter.h"
+
 #define DEFAULT_TASKS_KEY @"defaultTasks"
 
 @implementation TasksSaver {
@@ -22,7 +23,11 @@
     NSMutableDictionary *rootObject = [TasksLoader loadRootDictForTasksForDate:date];
     [rootObject setValue:tasks forKey:key];
 
-    [NSKeyedArchiver archiveRootObject:rootObject toFile:path];
+    if ([tasks count] == 0) {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    } else {
+        [NSKeyedArchiver archiveRootObject:rootObject toFile:path];
+    }
 }
 
 + (void)saveDefaultTasks:(NSArray *)tasks {
