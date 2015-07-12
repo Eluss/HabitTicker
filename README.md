@@ -1,4 +1,4 @@
-# HabitTicker
+# HabitTracker
 
 Simple app which allows to track your habits.
 User can create list of tasks, which he wants to track everyday. After that he is able to copy this list to every day
