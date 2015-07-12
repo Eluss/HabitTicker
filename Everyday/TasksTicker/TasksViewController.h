@@ -27,4 +27,7 @@
 - (instancetype)initWithDate:(NSDate *)date;
 
 - (void)tasksForDate:(NSDate *)date;
+
+- (void)markSwiperIfCurrentDate;
+
 @end

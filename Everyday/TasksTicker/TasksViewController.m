@@ -72,6 +72,11 @@
     [self.view layoutIfNeeded];
 }
 
+- (void)markSwiperIfCurrentDate {
+    [_dataSwiperView markIfCurrentDate];
+}
+
+
 - (void)didMoveToPreviousDate {
     [self.delegate previousTasksList];
 }

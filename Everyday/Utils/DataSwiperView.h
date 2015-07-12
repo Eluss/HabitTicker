@@ -21,5 +21,7 @@
 
 - (instancetype)initWithDate:(NSDate *)date;
 
+- (void)markIfCurrentDate;
+
 - (void)updateDate:(NSDate *)date;
 @end

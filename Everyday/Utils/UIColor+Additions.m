@@ -35,5 +35,8 @@
     return UIColorFromRGB(0xA0000F);
 }
 
++ (UIColor *)currentDateColor {
+    return UIColorFromRGB(0x82B92E);
+}
 
 @end

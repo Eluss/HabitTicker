@@ -69,6 +69,15 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd.MM.yyyy"];
     _dataLabel.text = [dateFormatter stringFromDate:self.swiperDate];
+
+}
+
+- (void)markIfCurrentDate {
+    if ([self.swiperDate isToday]) {
+        _dataLabel.textColor = [UIColor currentDateColor];
+    } else {
+        _dataLabel.textColor = [UIColor blackColor];
+    }
 }
 
 - (void)addSwipeGestures {

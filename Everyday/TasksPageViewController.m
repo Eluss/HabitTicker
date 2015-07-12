@@ -70,6 +70,7 @@
     TasksViewController *viewController = _controllers[(NSUInteger) _controllerIndex];
     [viewController tasksForDate:_tasksDate];
     NSArray *viewControllerArray = @[viewController];
+    [viewController markSwiperIfCurrentDate];
     return viewControllerArray;
 }
 

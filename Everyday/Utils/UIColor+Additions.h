@@ -18,4 +18,6 @@
 + (UIColor *)doneColor;
 
 + (UIColor *)notDoneColor;
+
++ (UIColor *)currentDateColor;
 @end
