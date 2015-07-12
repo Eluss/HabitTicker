@@ -29,8 +29,6 @@
     return self;
 }
 
-
-
 - (void)setupView {
     [self registerClass:[MCSwipeTableViewCell class] forCellReuseIdentifier:@"taskCell"];
     self.delegate = self;

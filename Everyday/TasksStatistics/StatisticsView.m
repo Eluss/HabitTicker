@@ -39,14 +39,14 @@
     UILabel *doneLabel = [UILabel new];
     [cellView addSubview:doneLabel];
     doneLabel.text = [NSString stringWithFormat:@"%d", _taskStatistics.doneCounter];
-    doneLabel.font = [Fonts cellFont];
-    doneLabel.textColor = [UIColor everydayGreenColor];
+    doneLabel.font = [Fonts statisticsFont];
+    doneLabel.textColor = [UIColor doneColor];
 
     UILabel *notDoneLabel = [UILabel new];
     [cellView addSubview:notDoneLabel];
     notDoneLabel.text = [NSString stringWithFormat:@"%d", _taskStatistics.notDoneCounter];
-    notDoneLabel.textColor = [UIColor everydayRedColor];
-    notDoneLabel.font = [Fonts cellFont];
+    notDoneLabel.textColor = [UIColor notDoneColor];
+    notDoneLabel.font = [Fonts statisticsFont];
 
     [notDoneLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:HORIZONTAL_SPACING];
     [notDoneLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:cellView];

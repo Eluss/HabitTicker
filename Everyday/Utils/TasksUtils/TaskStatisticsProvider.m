@@ -76,7 +76,7 @@
 
 + (NSMutableArray *)tasksFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
     NSMutableArray *tasksDaysArray = [NSMutableArray new];
-    while (fromDate.day <= toDate.day) {
+    while (fromDate.day <= toDate.day || fromDate.month <= toDate.month) {
         NSArray *tasks = [TasksLoader loadTasksForDate:fromDate];
         if (tasks != nil) {
             [tasksDaysArray addObject:tasks];

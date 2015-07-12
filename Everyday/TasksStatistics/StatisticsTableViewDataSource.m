@@ -27,7 +27,8 @@
 
 - (NSArray *)loadData {
     NSDate *fromDate = [NSDate date];
-    fromDate = [fromDate dateByAddingDays:-7];
+    NSInteger statisticDays = 30;
+    fromDate = [fromDate dateByAddingDays:-statisticDays];
     NSDate *toDate = [NSDate date];
 
     NSArray *statistics = [TaskStatisticsProvider statisticsFromDate:fromDate toDate:toDate];

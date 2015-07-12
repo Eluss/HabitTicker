@@ -10,4 +10,6 @@
 + (UIFont *)headerFont;
 
 + (UIFont *)cellFont;
+
++ (UIFont *)statisticsFont;
 @end

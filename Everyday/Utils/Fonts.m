@@ -11,11 +11,15 @@
 }
 
 + (UIFont *)headerFont {
-    return [UIFont fontWithName:@"HelveticaNeue" size:30];
+    return [UIFont fontWithName:@"Verdana-Bold" size:30];
 }
 
 + (UIFont *)cellFont {
-    return [UIFont fontWithName:@"HelveticaNeue" size:25];
+    return [UIFont fontWithName:@"Verdana" size:25];
+}
+
++ (UIFont *)statisticsFont {
+    return [UIFont fontWithName:@"Verdana-Bold" size:30];
 }
 
 @end

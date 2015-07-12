@@ -10,20 +10,30 @@
 @implementation UIColor (Additions)
 
 + (UIColor *)headerColor {
-    return UIColorFromRGB(0xFFFF00);
+//    return [UIColor whiteColor];
+    return UIColorFromRGB(0xFFEEEE);
 }
 
 + (UIColor *)backgroundColor {
-//    return UIColorFromRGB(0x518FB4);
+//    return UIColorFromRGB(0xFFDFCB);
     return [UIColor whiteColor];
 }
 
 + (UIColor *)everydayGreenColor {
-    return UIColorFromRGB(0x0CAB5A);
+    return UIColorFromRGB(0xCBFFB8);
 }
 
 + (UIColor *)everydayRedColor {
-    return UIColorFromRGB(0xF34812);
+    return UIColorFromRGB(0xFFB8C3);
 }
+
++ (UIColor *)doneColor {
+    return UIColorFromRGB(0x539700);
+}
+
++ (UIColor *)notDoneColor {
+    return UIColorFromRGB(0xA0000F);
+}
+
 
 @end

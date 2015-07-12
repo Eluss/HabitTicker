@@ -14,4 +14,8 @@
 + (UIColor *)everydayGreenColor;
 
 + (UIColor *)everydayRedColor;
+
++ (UIColor *)doneColor;
+
++ (UIColor *)notDoneColor;
 @end
